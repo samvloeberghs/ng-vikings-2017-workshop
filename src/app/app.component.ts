@@ -2,7 +2,6 @@ import { Component, ViewChild } from '@angular/core';
 
 import { Events, MenuController, Nav, Platform } from 'ionic-angular';
 import { Splashscreen } from 'ionic-native';
-import { Storage } from '@ionic/storage';
 
 import { AboutPage } from '../pages/about/about';
 import { AccountPage } from '../pages/account/account';
@@ -10,7 +9,6 @@ import { LoginPage } from '../pages/login/login';
 import { MapPage } from '../pages/map/map';
 import { SignupPage } from '../pages/signup/signup';
 import { TabsPage } from '../pages/tabs/tabs';
-import { TutorialPage } from '../pages/tutorial/tutorial';
 import { SchedulePage } from '../pages/schedule/schedule';
 import { SpeakerListPage } from '../pages/speaker-list/speaker-list';
 import { SupportPage } from '../pages/support/support';
@@ -61,20 +59,11 @@ export class ConferenceApp {
     public userData: UserData,
     public menu: MenuController,
     public platform: Platform,
-    public confData: ConferenceData,
-    public storage: Storage
+    public confData: ConferenceData
   ) {
 
-    // Check if the user has already seen the tutorial
-    this.storage.get('hasSeenTutorial')
-      .then((hasSeenTutorial) => {
-        if (hasSeenTutorial) {
-          this.rootPage = TabsPage;
-        } else {
-          this.rootPage = TutorialPage;
-        }
-        this.platformReady()
-      })
+    this.rootPage = TabsPage;
+    this.platformReady();
 
     // load the conference data
     confData.load();
@@ -105,10 +94,6 @@ export class ConferenceApp {
         this.userData.logout();
       }, 1000);
     }
-  }
-
-  openTutorial() {
-    this.nav.setRoot(TutorialPage);
   }
 
   listenToLoginEvents() {

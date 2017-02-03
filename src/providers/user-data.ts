@@ -8,7 +8,6 @@ import { Storage } from '@ionic/storage';
 export class UserData {
   _favorites: string[] = [];
   HAS_LOGGED_IN = 'hasLoggedIn';
-  HAS_SEEN_TUTORIAL = 'hasSeenTutorial';
 
   constructor(
     public events: Events,
@@ -65,9 +64,4 @@ export class UserData {
     });
   };
 
-  checkHasSeenTutorial() {
-    return this.storage.get(this.HAS_SEEN_TUTORIAL).then((value) => {
-      return value;
-    })
-  };
 }
