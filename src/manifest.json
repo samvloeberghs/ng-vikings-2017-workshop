@@ -5,7 +5,7 @@
   "display": "standalone",
   "icons": [{
     "src": "assets/img/appicon.png",
-    "sizes": "512x512",
+    "sizes": "192x192",
     "type": "image/png"
   }],
   "background_color": "#387ef5",
