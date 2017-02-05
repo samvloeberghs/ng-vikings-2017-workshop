@@ -1,2 +1,2 @@
 export { SpeakerListModule } from './speaker-list.module';
-export { SpeakerListPage } from './speaker-list';
+export { SpeakerListPage } from './speaker-list'; 

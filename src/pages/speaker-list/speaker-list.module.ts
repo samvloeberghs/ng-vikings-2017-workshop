@@ -18,4 +18,4 @@ import { SpeakerListComponent } from './speaker-list/speaker-list.component';
     SpeakerListPage
   ]
 })
-export class SpeakerListModule { }
+export class SpeakerListModule { } 
