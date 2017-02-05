@@ -1,0 +1,29 @@
+<div text-center>
+  <img [src]="speaker.avatar" [alt]="speaker.name"><br>
+
+  <button ion-button icon-only clear small
+    *ngIf="speaker.social.website"
+    (click)="url.emit(speaker.social.website)">
+    <ion-icon name="link"></ion-icon>
+  </button>
+  <button ion-button icon-only clear small
+    *ngIf="speaker.social.twitter"
+    (click)="url.emit('https://twitter.com', speaker.social.twitter)">
+    <ion-icon name="logo-twitter"></ion-icon>
+  </button>
+  <button ion-button icon-only clear small
+    *ngIf="speaker.social.github"
+    (click)="url.emit('https://github.com', speaker.social.github)">
+    <ion-icon name="logo-github"></ion-icon>
+  </button>
+</div>
+
+<h2>{{speaker.role}}</h2>
+
+<p>{{speaker.description}}</p>
+
+<session-list
+  *ngIf="speaker.sessions && speaker.sessions.length > 0"
+  [sessions]="speaker.sessions"
+  (select)="session.emit($event)">
+</session-list>
