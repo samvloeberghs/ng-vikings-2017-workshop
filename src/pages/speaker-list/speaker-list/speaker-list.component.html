@@ -1,0 +1,40 @@
+<ion-card *ngFor="let speaker of speakers" class="speaker-card">
+
+  <ion-card-header>
+    <ion-item>
+      <ion-avatar item-left>
+        <img [src]="speaker.avatar" alt="Speaker profile pic">
+      </ion-avatar>
+      <h2>{{speaker.name}}</h2>
+      <p>{{speaker.company}}, {{speaker.country}}</p>
+    </ion-item>
+  </ion-card-header>
+
+  <ion-card-content class="outer-content">
+    <p>{{speaker.description}}</p>
+
+    <ion-list>
+     <button ion-item (click)="select.emit(speaker)">
+        <h3>Read more about {{speaker.name}}</h3>
+      </button>
+    </ion-list>
+  </ion-card-content>
+
+  <ion-row no-padding>
+    <ion-col text-right>
+      <button *ngIf="speaker.social.website" ion-button clear small color="primary" icon-left (click)="open.next(speaker.social.website)">
+        <ion-icon name="link"></ion-icon>
+        Web
+      </button>
+      <button *ngIf="speaker.social.twitter"  ion-button clear small color="primary" icon-left (click)="open.next('https://twitter.com/' + speaker.social.twitter)">
+        <ion-icon name="logo-twitter"></ion-icon>
+        Tweet
+      </button>
+      <button *ngIf="speaker.social.github"  ion-button clear small color="primary" icon-left (click)="open.next('https://github.com/' + speaker.social.github)">
+        <ion-icon name="logo-github"></ion-icon>
+        Follow
+      </button>
+    </ion-col>
+  </ion-row>
+
+</ion-card>

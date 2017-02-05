@@ -1,0 +1,18 @@
+speaker-detail {
+  text-align: center;
+
+  img {
+    max-width: 140px;
+    border-radius: 50%;
+    border: 10px solid #eee;
+  }
+
+  p {
+    color: #60646B;
+  }
+
+  session-list {
+    display: block;
+    margin-top: 40px;
+  }
+}

@@ -2,19 +2,27 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
 import { SessionDetailPage } from '../session-detail/session-detail';
+import { URLService } from '../../shared/services';
+import { Speaker, Session } from '../../shared/entities';
 
 @Component({
   selector: 'page-speaker-detail',
   templateUrl: 'speaker-detail.html'
 })
 export class SpeakerDetailPage {
-  speaker: any;
+  speaker: Speaker;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private navCtrl: NavController,
+              private navParams: NavParams,
+              private urlService: URLService) {
     this.speaker = this.navParams.data;
   }
 
-  goToSessionDetail(session: any) {
+  goToSessionDetail(session: Session) {
     this.navCtrl.push(SessionDetailPage, session);
+  }
+
+  openUrl(url: string) {
+    this.urlService.open(url);
   }
 }
