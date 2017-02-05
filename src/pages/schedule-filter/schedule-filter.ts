@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
-
 import { NavParams, ViewController } from 'ionic-angular';
 
 import { ConferenceData } from '../../providers/conference-data';
-
 
 @Component({
   selector: 'page-schedule-filter',

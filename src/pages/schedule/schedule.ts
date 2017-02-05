@@ -1,5 +1,4 @@
 import { Component, ViewChild } from '@angular/core';
-
 import { AlertController, App, FabContainer, ItemSliding, List, ModalController, NavController, LoadingController } from 'ionic-angular';
 
 /*
@@ -12,7 +11,6 @@ import { ConferenceData } from '../../providers/conference-data';
 import { ScheduleFilterPage } from '../schedule-filter/schedule-filter';
 import { SessionDetailPage } from '../session-detail/session-detail';
 import { UserData } from '../../providers/user-data';
-
 
 @Component({
   selector: 'page-schedule',

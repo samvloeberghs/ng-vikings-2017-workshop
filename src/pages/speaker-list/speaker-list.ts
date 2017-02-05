@@ -1,12 +1,10 @@
 import { Component } from '@angular/core';
-
 import { ActionSheet, ActionSheetController, Config, NavController } from 'ionic-angular';
 import { InAppBrowser } from 'ionic-native';
 
 import { ConferenceData } from '../../providers/conference-data';
 import { SessionDetailPage } from '../session-detail/session-detail';
 import { SpeakerDetailPage } from '../speaker-detail/speaker-detail';
-
 
 @Component({
   selector: 'page-speaker-list',
