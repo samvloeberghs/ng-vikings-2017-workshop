@@ -27,6 +27,8 @@ export class ConferenceDataService {
       this.sessions$,
       (rooms: string[], sessions: Session[]): Session[] => {
         return sessions.map((session: any) => {
+          this.prefetch(session.image);
+
           session.startDate = new Date(session.startDate);
           session.endDate = new Date(session.endDate);
           session.room = rooms[session.roomId];
@@ -45,6 +47,8 @@ export class ConferenceDataService {
       this.rpSessions$,
       (speakers: Speaker[], sessions: Session[]): Speaker[] => {
         return speakers.map((speaker: any) => {
+          this.prefetch(speaker.avatar);
+
           if (speaker.sessionIds) {
             speaker.sessions = speaker.sessionIds.map((x: number) => sessions[x]);
 
@@ -79,7 +83,9 @@ export class ConferenceDataService {
   }
 
   private prefetch(url: string) {
-    const img = new Image()
-    img.src = url;
+    if (url) {
+      const img = new Image()
+      img.src = url;
+    }
   }
 }
