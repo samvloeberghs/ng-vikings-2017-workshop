@@ -7,7 +7,6 @@ import { ConferenceApp } from './app.component';
 import { firebaseConfig } from './app.firebase';
 import { AccountPage } from '../pages/account/account';
 import { LoginPage } from '../pages/login/login';
-import { SchedulePage } from '../pages/schedule/schedule';
 import { ScheduleFilterPage } from '../pages/schedule-filter/schedule-filter';
 import { SessionDetailPage } from '../pages/session-detail/session-detail';
 import { SignupPage } from '../pages/signup/signup';
@@ -16,6 +15,7 @@ import { ConferenceData } from '../providers/conference-data';
 import { UserData } from '../providers/user-data';
 
 // App Modules
+import { ScheduleModule } from '../pages/schedule';
 import { SpeakerListModule } from '../pages/speaker-list';
 import { SpeakerDetailModule } from '../pages/speaker-detail';
 import { SharedModule } from '../shared/shared.module';
@@ -25,7 +25,6 @@ import { SharedModule } from '../shared/shared.module';
     ConferenceApp,
     AccountPage,
     LoginPage,
-    SchedulePage,
     ScheduleFilterPage,
     SessionDetailPage,
     SignupPage,
@@ -35,6 +34,7 @@ import { SharedModule } from '../shared/shared.module';
     IonicModule.forRoot(ConferenceApp),
     AngularFireModule.initializeApp(firebaseConfig),
     SharedModule.forRoot(),
+    ScheduleModule,
     SpeakerListModule,
     SpeakerDetailModule
   ],
@@ -43,7 +43,6 @@ import { SharedModule } from '../shared/shared.module';
     ConferenceApp,
     AccountPage,
     LoginPage,
-    SchedulePage,
     ScheduleFilterPage,
     SessionDetailPage,
     SignupPage,

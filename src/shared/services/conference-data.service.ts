@@ -5,16 +5,17 @@ import { Observable, ReplaySubject } from 'rxjs';
 import { Storage } from '@ionic/storage';
 
 // app imports
-import { Speaker, Session } from '../entities';
+import { Speaker, Session, SessionGroup } from '../entities';
 
 @Injectable()
 export class ConferenceDataService {
 
   rpSpeakers$ = new ReplaySubject<Speaker[]>();
   rpSessions$ = new ReplaySubject<Session[]>();
+  rpSessionGroups$ = new ReplaySubject<SessionGroup[]>();
 
   // basic entities
-  private rooms$: Observable<string[]> = this.loadEntity('rooms');
+  private rooms$: Observable<string[]> = this.loadEntity('rooms').map(rooms => rooms.map((x:any) => x.$value));
   private speakers$: Observable<Speaker[]> = this.loadEntity('speakers');
   private sessions$: Observable<Session[]> = this.loadEntity('sessions');
 
@@ -61,9 +62,30 @@ export class ConferenceDataService {
     ).subscribe((speakers: Speaker[]) => {
       this.rpSpeakers$.next(speakers);
     });
+
+    this.rpSessions$.subscribe((sessions: Session[]) => {
+      const groups: SessionGroup[] = [];
+
+      for (let i = 0; i < 24; i++) {
+        const sessionsInGroup = sessions.filter((session) => {
+          return session.startDate.getHours() >= i && session.startDate.getHours() < (i + 1);
+        });
+
+        if (sessionsInGroup.length > 0) {
+          groups.push({
+            startHour: i,
+            endHour: (i + 1),
+            sessions: sessionsInGroup
+          });
+        }
+      }
+
+      this.rpSessionGroups$.next(groups);
+    });
   }
 
   private loadEntity(entity: string) {
+    // TODO make this a hot observable
     return Observable.merge(
       this.loadRemoteEntity(entity),
       this.loadLocalEntity(entity)
