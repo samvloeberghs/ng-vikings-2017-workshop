@@ -1,21 +1,31 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>Session</ion-title>
-  </ion-navbar>
+  <session-navbar
+    [session]="session"
+    (favorite)="toggleFavorite()">
+  </session-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h1>{{session.name}}</h1>
+  <h1>{{session.title}}</h1>
 
-  <h4 *ngFor="let speaker of session.speakers">
-    {{speaker.name}}
-  </h4>
+  <session-info
+    [session]="session">
+  </session-info>
 
-  <p>
-    {{session.timeStart}} - {{session.timeEnd}}
-  </p>
+  <session-actions
+    [session]="session"
+    (favorite)="toggleFavorite()">
+  </session-actions>
 
-  <p>{{session.location}}</p>
+  <h3>Description:</h3>
+  <div [innerHtml]="session.description"></div>
 
-  <p>{{session.description}}</p>
+  <div *ngIf="session.speakers.length">
+    <h3>Speakers:</h3>
+
+    <session-speaker-list
+      [speakers]="session.speakers"
+      (select)="goToSpeakerDetail($event)">
+    </session-speaker-list>
+  </div>
 </ion-content>

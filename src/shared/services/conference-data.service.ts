@@ -33,6 +33,7 @@ export class ConferenceDataService {
           session.startDate = new Date(session.startDate);
           session.endDate = new Date(session.endDate);
           session.room = rooms[session.roomId];
+          session.speakers = [];
 
           delete session.roomId;
 
@@ -51,7 +52,13 @@ export class ConferenceDataService {
           this.prefetch(speaker.avatar);
 
           if (speaker.sessionIds) {
-            speaker.sessions = speaker.sessionIds.map((x: number) => sessions[x]);
+            speaker.sessions = speaker.sessionIds.map((x: number) => {
+              const session = sessions[x];
+
+              session.speakers.push(speaker);
+
+              return session;
+            });
 
             delete speaker.sessionIds;
           }
