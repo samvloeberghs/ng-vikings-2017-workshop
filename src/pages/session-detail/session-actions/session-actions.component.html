@@ -1,0 +1,7 @@
+<p>
+  <button ion-button icon-left small color="favorite" (click)="favorite.emit()">
+    <ion-icon name='bookmark'></ion-icon>
+    <span *ngIf="!session.favorite">Favorite session</span>
+    <span *ngIf="session.favorite">Defavorite session</span>
+  </button>
+</p>

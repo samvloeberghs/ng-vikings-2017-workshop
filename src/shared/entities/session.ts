@@ -1,3 +1,5 @@
+import { Speaker } from './speaker';
+
 export interface Session {
   title: string;
   description: string;
@@ -6,4 +8,5 @@ export interface Session {
   image: string;
   room: string;
   hidden: boolean;
+  speakers: Speaker[];
 };

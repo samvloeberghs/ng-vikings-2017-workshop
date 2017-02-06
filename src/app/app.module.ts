@@ -8,7 +8,6 @@ import { firebaseConfig } from './app.firebase';
 import { AccountPage } from '../pages/account/account';
 import { LoginPage } from '../pages/login/login';
 import { ScheduleFilterPage } from '../pages/schedule-filter/schedule-filter';
-import { SessionDetailPage } from '../pages/session-detail/session-detail';
 import { SignupPage } from '../pages/signup/signup';
 import { TabsPage } from '../pages/tabs/tabs';
 import { ConferenceData } from '../providers/conference-data';
@@ -16,6 +15,7 @@ import { UserData } from '../providers/user-data';
 
 // App Modules
 import { ScheduleModule } from '../pages/schedule';
+import { SessionDetailModule } from '../pages/session-detail';
 import { SpeakerListModule } from '../pages/speaker-list';
 import { SpeakerDetailModule } from '../pages/speaker-detail';
 import { SharedModule } from '../shared/shared.module';
@@ -26,7 +26,6 @@ import { SharedModule } from '../shared/shared.module';
     AccountPage,
     LoginPage,
     ScheduleFilterPage,
-    SessionDetailPage,
     SignupPage,
     TabsPage
   ],
@@ -35,6 +34,7 @@ import { SharedModule } from '../shared/shared.module';
     AngularFireModule.initializeApp(firebaseConfig),
     SharedModule.forRoot(),
     ScheduleModule,
+    SessionDetailModule,
     SpeakerListModule,
     SpeakerDetailModule
   ],
@@ -44,7 +44,6 @@ import { SharedModule } from '../shared/shared.module';
     AccountPage,
     LoginPage,
     ScheduleFilterPage,
-    SessionDetailPage,
     SignupPage,
     TabsPage
   ],
