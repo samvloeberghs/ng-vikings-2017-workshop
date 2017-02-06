@@ -15,7 +15,6 @@ export class ConferenceDataService {
   rpSessionGroups$ = new ReplaySubject<SessionGroup[]>();
 
   // basic entities
-  private rooms$: Observable<string[]> = this.loadEntity('rooms').map(rooms => rooms.map((x:any) => x.$value));
   private speakers$: Observable<Speaker[]> = this.loadEntity('speakers');
   private sessions$: Observable<Session[]> = this.loadEntity('sessions');
 
@@ -23,26 +22,23 @@ export class ConferenceDataService {
   constructor(private af: AngularFire,
               private storage: Storage) {
 
-    Observable.combineLatest(
-      this.rooms$,
-      this.sessions$,
-      (rooms: string[], sessions: Session[]): Session[] => {
+    this.sessions$
+      .map((sessions: Session[]) => {
         return sessions.map((session: any) => {
           this.prefetch(session.image);
 
           session.startDate = new Date(session.startDate);
           session.endDate = new Date(session.endDate);
-          session.room = rooms[session.roomId];
           session.speakers = [];
 
           delete session.roomId;
 
           return session;
         });
-      }
-    ).subscribe((sessions: Session[]) => {
-      this.rpSessions$.next(sessions);
-    });
+      })
+      .subscribe((sessions: Session[]) => {
+        this.rpSessions$.next(sessions);
+      });
 
     Observable.combineLatest(
       this.speakers$,
