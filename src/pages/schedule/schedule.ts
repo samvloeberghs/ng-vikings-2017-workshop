@@ -63,7 +63,7 @@ export class SchedulePage {
     this.scheduleList && this.scheduleList.closeSlidingItems();
 
     this.groups$ = this.search$.switchMap(term => {
-      term = term.toLowerCase();
+      term = typeof term === 'string' ? term.toLowerCase() : '';
 
       return this.confData.rpSessionGroups$
         .map(groups => {
