@@ -1,5 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
-import { AlertController, App, FabContainer, ItemSliding, List, ModalController, NavController, LoadingController } from 'ionic-angular';
+import { AlertController, ToastController, App, ItemSliding, List, ModalController, NavController, LoadingController } from 'ionic-angular';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Observable } from 'rxjs/Observable';
 
 /*
   To learn how to use third party libs in an
@@ -7,10 +9,13 @@ import { AlertController, App, FabContainer, ItemSliding, List, ModalController,
 */
 // import moment from 'moment';
 
-import { ConferenceData } from '../../providers/conference-data';
 import { ScheduleFilterPage } from '../schedule-filter/schedule-filter';
 import { SessionDetailPage } from '../session-detail/session-detail';
 import { UserData } from '../../providers/user-data';
+import { ConferenceDataService, ConnectionService } from '../../shared/services';
+import { Session, SessionGroup } from '../../shared/entities';
+import { ToggleResult } from './entities';
+import { LoginPage } from '../login/login';
 
 @Component({
   selector: 'page-schedule',
@@ -31,14 +36,21 @@ export class SchedulePage {
   groups: any = [];
   confDate: string;
 
+  groups$: Observable<SessionGroup[]>;
+  search$ = new BehaviorSubject<string>('');
+
+  private isAuthenticated = false;
+
   constructor(
-    public alertCtrl: AlertController,
-    public app: App,
-    public loadingCtrl: LoadingController,
-    public modalCtrl: ModalController,
-    public navCtrl: NavController,
-    public confData: ConferenceData,
-    public user: UserData,
+    private alertCtrl: AlertController,
+    private toastCtrl: ToastController,
+    private app: App,
+    private loadingCtrl: LoadingController,
+    private modalCtrl: ModalController,
+    private navCtrl: NavController,
+    private confData: ConferenceDataService,
+    private connectionService: ConnectionService,
+    private user: UserData
   ) {}
 
   ionViewDidLoad() {
@@ -50,9 +62,23 @@ export class SchedulePage {
     // Close any open sliding items when the schedule updates
     this.scheduleList && this.scheduleList.closeSlidingItems();
 
-    this.confData.getTimeline(this.dayIndex, this.queryText, this.excludeTracks, this.segment).subscribe((data: any) => {
-      this.shownSessions = data.shownSessions;
-      this.groups = data.groups;
+    this.groups$ = this.search$.switchMap(term => {
+      term = term.toLowerCase();
+
+      return this.confData.rpSessionGroups$
+        .map(groups => {
+          const filteredGroups: SessionGroup[] = groups.map(group => Object.assign({}, group));
+
+          for (const group of filteredGroups) {
+            group.sessions = group.sessions.filter(session => {
+              const show = this.segment === 'all' || this.user.hasFavorite(session.title);
+
+              return show && session.title.toLowerCase().indexOf(term) !== -1;
+            });
+          }
+
+          return filteredGroups.filter(group => group.sessions.length > 0);
+        });
     });
   }
 
@@ -69,77 +95,98 @@ export class SchedulePage {
 
   }
 
-  goToSessionDetail(sessionData: any) {
+  goToSessionDetail(session: Session) {
     // go to the session detail page
     // and pass in the session data
-    this.navCtrl.push(SessionDetailPage, sessionData);
+    this.navCtrl.push(SessionDetailPage, session);
   }
 
-  addFavorite(slidingItem: ItemSliding, sessionData: any) {
-
-    if (this.user.hasFavorite(sessionData.name)) {
-      // woops, they already favorited it! What shall we do!?
-      // prompt them to remove it
-      this.removeFavorite(slidingItem, sessionData, 'Favorite already added');
-    } else {
-      // remember this session as a user favorite
-      this.user.addFavorite(sessionData.name);
-
-      // create an alert instance
-      let alert = this.alertCtrl.create({
-        title: 'Favorite Added',
-        buttons: [{
-          text: 'OK',
-          handler: () => {
-            // close the sliding item
-            slidingItem.close();
+  toggleFavorite({slidingItem, session}: ToggleResult) {
+    if (this.user.hasFavorite(session.title)) {
+      const alert = this.alertCtrl.create({
+        title: 'Defavorite',
+        message: 'Would you like to remove this session from your favorites?',
+        buttons: [
+          {
+            text: 'Cancel',
+            handler: () => {
+              slidingItem.close();
+              return;
+            }
+          },
+          {
+            text: 'Defavorite',
+            handler: () => {
+              this.toggleFavoriteToast(session, slidingItem);
+            }
           }
-        }]
+        ]
       });
+
+      // now present the alert on top of all other content
+      alert.present();
+    } else {
+      this.toggleFavoriteToast(session, slidingItem);
+    }
+  }
+
+  private toggleFavoriteToast(session: Session, slidingItem: ItemSliding) {
+    const isFavorite = this.user.hasFavorite(session.title);
+
+    if (!this.connectionService.isConnected()) {
+      const toast = this.toastCtrl.create({
+        message: `You need an internet connection to ${isFavorite ? 'defavorite' : 'favorite'} the session.`,
+        showCloseButton: true,
+        closeButtonText: 'close',
+        duration: 3000
+      });
+      toast.present();
+    } else if (this.isAuthenticated) {
+      // if (!isFavorite) {
+      //   this.conferenceData.setFavorite(session.$key);
+      // } else {
+      //   this.conferenceData.removeFavorite(session.favorite.$key);
+      //   delete session.favorite;
+      // }
+
+      // TODO add favorite to Firebase, see code ^^
+      if (!isFavorite) {
+        this.user.addFavorite(session.title);
+      } else {
+        this.user.removeFavorite(session.title);
+      }
+
+      const toast = this.toastCtrl.create({
+        message: isFavorite ? 'Session has been favorited' : 'Session has been defavorited',
+        showCloseButton: true,
+        closeButtonText: 'close',
+        duration: 3000
+      });
+      toast.present();
+    } else {
+      const alert = this.alertCtrl.create({
+        title: 'Not logged in',
+        message: 'You need to be logged in to favorite the session.',
+        buttons: [
+          {
+            text: 'Cancel',
+            handler: () => {
+            }
+          },
+          {
+            text: 'Go to login',
+            handler: () => {
+              this.navCtrl.push(LoginPage);
+              alert.dismiss();
+            }
+          }
+        ]
+      });
+
       // now present the alert on top of all other content
       alert.present();
     }
 
-  }
-
-  removeFavorite(slidingItem: ItemSliding, sessionData: any, title: string) {
-    let alert = this.alertCtrl.create({
-      title: title,
-      message: 'Would you like to remove this session from your favorites?',
-      buttons: [
-        {
-          text: 'Cancel',
-          handler: () => {
-            // they clicked the cancel button, do not remove the session
-            // close the sliding item and hide the option buttons
-            slidingItem.close();
-          }
-        },
-        {
-          text: 'Remove',
-          handler: () => {
-            // they want to remove this session from their favorites
-            this.user.removeFavorite(sessionData.name);
-            this.updateSchedule();
-
-            // close the sliding item and hide the option buttons
-            slidingItem.close();
-          }
-        }
-      ]
-    });
-    // now present the alert on top of all other content
-    alert.present();
-  }
-
-  openSocial(network: string, fab: FabContainer) {
-    let loading = this.loadingCtrl.create({
-      content: `Posting to ${network}`,
-      duration: (Math.random() * 1000) + 500
-    });
-    loading.onWillDismiss(() => {
-      fab.close();
-    });
-    loading.present();
+    slidingItem.close();
   }
 }

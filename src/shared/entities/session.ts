@@ -5,4 +5,5 @@ export interface Session {
   endDate: Date;
   image: string;
   room: string;
+  hidden: boolean;
 };
