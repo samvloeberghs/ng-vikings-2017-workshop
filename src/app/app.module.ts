@@ -6,10 +6,7 @@ import { AngularFireModule } from 'angularfire2';
 import { ConferenceApp } from './app.component';
 import { firebaseConfig } from './app.firebase';
 import { LoginPage } from '../pages/login/login';
-import { ScheduleFilterPage } from '../pages/schedule-filter/schedule-filter';
 import { TabsPage } from '../pages/tabs/tabs';
-import { ConferenceData } from '../providers/conference-data';
-import { UserData } from '../providers/user-data';
 
 // App Modules
 import { ScheduleModule } from '../pages/schedule';
@@ -22,7 +19,6 @@ import { SharedModule } from '../shared/shared.module';
   declarations: [
     ConferenceApp,
     LoginPage,
-    ScheduleFilterPage,
     TabsPage
   ],
   imports: [
@@ -38,9 +34,8 @@ import { SharedModule } from '../shared/shared.module';
   entryComponents: [
     ConferenceApp,
     LoginPage,
-    ScheduleFilterPage,
     TabsPage
   ],
-  providers: [ConferenceData, UserData, Storage]
+  providers: [Storage]
 })
 export class AppModule { }

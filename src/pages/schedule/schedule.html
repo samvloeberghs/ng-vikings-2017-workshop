@@ -13,11 +13,6 @@
       </ion-segment-button>
     </ion-segment>
 
-    <ion-buttons end>
-      <button ion-button icon-only (click)="presentFilter()">
-        <ion-icon ios="ios-options-outline" md="md-options"></ion-icon>
-      </button>
-    </ion-buttons>
   </ion-navbar>
 
   <ion-toolbar no-border-top>
@@ -30,14 +25,14 @@
 
 <ion-content>
   <session-list
-    *ngIf="shownSessions !== 0"
+    *ngIf="(groups$ | async)?.length > 0"
     [groups]="groups$ | async"
     [options]="segment === 'all'"
     (toggle)="toggleFavorite($event)"
     (select)="goToSessionDetail($event)">
   </session-list>
 
-  <ion-list-header *ngIf="shownSessions === 0">
+  <ion-list-header *ngIf="(groups$ | async)?.length === 0">
       No Sessions Found
   </ion-list-header>
 

@@ -1,17 +1,25 @@
-import { Component, ViewChild } from '@angular/core';
-import { AlertController, ToastController, App, ItemSliding, List, ModalController, NavController, LoadingController } from 'ionic-angular';
+import { Component, ViewChild, OnInit } from '@angular/core';
+import {
+  AlertController,
+  ToastController,
+  LoadingController,
+  Loading,
+  App,
+  ItemSliding,
+  List,
+  ModalController,
+  NavController
+} from 'ionic-angular';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 
 /*
-  To learn how to use third party libs in an
-  Ionic app check out our docs here: http://ionicframework.com/docs/v2/resources/third-party-libs/
-*/
+ To learn how to use third party libs in an
+ Ionic app check out our docs here: http://ionicframework.com/docs/v2/resources/third-party-libs/
+ */
 // import moment from 'moment';
 
-import { ScheduleFilterPage } from '../schedule-filter/schedule-filter';
 import { SessionDetailPage } from '../session-detail/session-detail';
-import { UserData } from '../../providers/user-data';
 import { ConferenceDataService, ConnectionService } from '../../shared/services';
 import { Session, SessionGroup } from '../../shared/entities';
 import { ToggleResult } from './entities';
@@ -21,41 +29,41 @@ import { LoginPage } from '../login/login';
   selector: 'page-schedule',
   templateUrl: 'schedule.html'
 })
-export class SchedulePage {
+export class SchedulePage implements OnInit {
   // the list is a child of the schedule page
   // @ViewChild('scheduleList') gets a reference to the list
   // with the variable #scheduleList, `read: List` tells it to return
   // the List and not a reference to the element
-  @ViewChild('scheduleList', { read: List }) scheduleList: List;
-
-  dayIndex = 0;
-  queryText = '';
+  @ViewChild('scheduleList', {read: List}) scheduleList: List;
+;
   segment = 'all';
   excludeTracks: any = [];
   shownSessions: any = [];
   groups: any = [];
-  confDate: string;
+  loader: Loading;
 
   groups$: Observable<SessionGroup[]>;
   search$ = new BehaviorSubject<string>('');
 
   private isAuthenticated = false;
 
-  constructor(
-    private alertCtrl: AlertController,
-    private toastCtrl: ToastController,
-    private app: App,
-    private loadingCtrl: LoadingController,
-    private modalCtrl: ModalController,
-    private navCtrl: NavController,
-    private confData: ConferenceDataService,
-    private connectionService: ConnectionService,
-    private user: UserData
-  ) {}
+  constructor(private alertCtrl: AlertController,
+              private toastCtrl: ToastController,
+              private app: App,
+              private loadingCtrl: LoadingController,
+              private modalCtrl: ModalController,
+              private navCtrl: NavController,
+              private confData: ConferenceDataService,
+              private connectionService: ConnectionService) {
+  }
 
   ionViewDidLoad() {
     this.app.setTitle('Schedule - ngVikings 2017');
     this.updateSchedule();
+  }
+
+  ngOnInit(){
+    this.presentLoader();
   }
 
   updateSchedule() {
@@ -71,7 +79,7 @@ export class SchedulePage {
 
           for (const group of filteredGroups) {
             group.sessions = group.sessions.filter(session => {
-              const show = this.segment === 'all' || this.user.hasFavorite(session.title);
+              const show = this.segment === 'all';// || this.user.hasFavorite(session.title);
 
               return show && session.title.toLowerCase().indexOf(term) !== -1;
             });
@@ -80,19 +88,7 @@ export class SchedulePage {
           return filteredGroups.filter(group => group.sessions.length > 0);
         });
     });
-  }
-
-  presentFilter() {
-    let modal = this.modalCtrl.create(ScheduleFilterPage, this.excludeTracks);
-    modal.present();
-
-    modal.onWillDismiss((data: any[]) => {
-      if (data) {
-        this.excludeTracks = data;
-        this.updateSchedule();
-      }
-    });
-
+    this.closeLoader();
   }
 
   goToSessionDetail(session: Session) {
@@ -102,7 +98,7 @@ export class SchedulePage {
   }
 
   toggleFavorite({slidingItem, session}: ToggleResult) {
-    if (this.user.hasFavorite(session.title)) {
+    if (true/*this.user.hasFavorite(session.title)*/) {
       const alert = this.alertCtrl.create({
         title: 'Defavorite',
         message: 'Would you like to remove this session from your favorites?',
@@ -126,12 +122,12 @@ export class SchedulePage {
       // now present the alert on top of all other content
       alert.present();
     } else {
-      this.toggleFavoriteToast(session, slidingItem);
+      //this.toggleFavoriteToast(session, slidingItem);
     }
   }
 
   private toggleFavoriteToast(session: Session, slidingItem: ItemSliding) {
-    const isFavorite = this.user.hasFavorite(session.title);
+    const isFavorite = true;//this.user.hasFavorite(session.title);
 
     if (!this.connectionService.isConnected()) {
       const toast = this.toastCtrl.create({
@@ -151,9 +147,9 @@ export class SchedulePage {
 
       // TODO add favorite to Firebase, see code ^^
       if (!isFavorite) {
-        this.user.addFavorite(session.title);
+        //this.user.addFavorite(session.title);
       } else {
-        this.user.removeFavorite(session.title);
+        //this.user.removeFavorite(session.title);
       }
 
       const toast = this.toastCtrl.create({
@@ -189,4 +185,18 @@ export class SchedulePage {
 
     slidingItem.close();
   }
+
+  private presentLoader() {
+    this.loader = this.loadingCtrl.create({
+      content: "Please wait..."
+    });
+    this.loader.present();
+  }
+
+  private closeLoader() {
+    if (this.loader) {
+      this.loader.dismissAll();
+    }
+  }
+
 }

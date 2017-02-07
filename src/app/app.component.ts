@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { Events, MenuController, Nav, Platform, App, IonicApp } from 'ionic-angular';
 import { Splashscreen } from 'ionic-native';
 
@@ -6,8 +6,6 @@ import { LoginPage } from '../pages/login/login';
 import { TabsPage } from '../pages/tabs/tabs';
 import { SchedulePage } from '../pages/schedule/schedule';
 import { SpeakerListPage } from '../pages/speaker-list/speaker-list';
-import { ConferenceData } from '../providers/conference-data';
-import { UserData } from '../providers/user-data';
 
 export interface PageInterface {
   title: string;
@@ -21,7 +19,7 @@ export interface PageInterface {
 @Component({
   templateUrl: 'app.template.html'
 })
-export class ConferenceApp {
+export class ConferenceApp implements OnInit {
   // the root nav is a child of the root app component
   // @ViewChild(Nav) gets a reference to the app's root nav
   @ViewChild(Nav) nav: Nav;
@@ -43,34 +41,18 @@ export class ConferenceApp {
 
   private innerNavCtrl: any;
 
-  constructor(public events: Events,
-              public userData: UserData,
-              public menu: MenuController,
-              public platform: Platform,
-              public confData: ConferenceData,
+  constructor(private events: Events,
+              private menu: MenuController,
+              private platform: Platform,
               private app: App,
               private ionicApp: IonicApp) {
+  }
 
+  ngOnInit(){
     this.initApplication();
     this.setupBackButtonBehavior();
   }
 
-  initApplication(){
-    // Call any initial plugins when ready
-    this.platform.ready().then(() => {
-      Splashscreen.hide();
-    });
-
-    // load the conference data
-    this.confData.load();
-
-    // decide which menu items should be hidden by current login status stored in local storage
-    this.userData.hasLoggedIn().then((hasLoggedIn) => {
-      this.enableMenu(hasLoggedIn === true);
-    });
-
-    this.listenToLoginEvents();
-  }
 
   openPage(page: PageInterface) {
     // the nav component was found using @ViewChild(Nav)
@@ -87,20 +69,11 @@ export class ConferenceApp {
     if (page.logsOut === true) {
       // Give the menu time to close before changing to logged out
       setTimeout(() => {
-        this.userData.logout();
+       // do logout
       }, 1000);
     }
   }
 
-  listenToLoginEvents() {
-    this.events.subscribe('user:login', () => {
-      this.enableMenu(true);
-    });
-
-    this.events.subscribe('user:logout', () => {
-      this.enableMenu(false);
-    });
-  }
 
   enableMenu(loggedIn: boolean) {
     this.menu.enable(loggedIn, 'loggedInMenu');
@@ -122,6 +95,25 @@ export class ConferenceApp {
       return 'primary';
     }
     return;
+  }
+
+  private initApplication(){
+    // Call any initial plugins when ready
+    this.platform.ready().then(() => {
+      Splashscreen.hide();
+    });
+
+    this.listenToLoginEvents();
+  }
+
+  private listenToLoginEvents() {
+    this.events.subscribe('user:login', () => {
+      this.enableMenu(true);
+    });
+
+    this.events.subscribe('user:logout', () => {
+      this.enableMenu(false);
+    });
   }
 
   private setupBackButtonBehavior() {

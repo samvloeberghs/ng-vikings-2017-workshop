@@ -14,7 +14,6 @@ export class LoginPage {
   submitted = false;
 
   constructor(public navCtrl: NavController,
-              public userData: UserData,
               private app: App) {
   }
 
@@ -26,7 +25,6 @@ export class LoginPage {
     this.submitted = true;
 
     if (form.valid) {
-      this.userData.login(this.login.username);
       this.navCtrl.push(TabsPage);
     }
   }
