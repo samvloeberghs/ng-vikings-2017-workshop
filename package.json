@@ -13,7 +13,8 @@
   "scripts": {
     "build": "npm run ionic:build",
     "clean": "ionic-app-scripts clean",
-    "ionic:build": "node ./config/update-sw && ionic-app-scripts build",
+    "preionic:build": "node ./config/update-sw",
+    "ionic:build": "ionic-app-scripts build",
     "ionic:serve": "ionic-app-scripts serve"
   },
   "dependencies": {
