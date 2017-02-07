@@ -3,6 +3,9 @@
 app.firebase.ts
 app.workshop.firebase.ts
 
+firebase.json
+.firebaserc
+
 *~
 *.sw[mnpcod]
 *.log
