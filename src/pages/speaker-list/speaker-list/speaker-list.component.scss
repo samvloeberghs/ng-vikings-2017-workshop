@@ -1,6 +1,12 @@
 speaker-list {
   ion-card-content p {
-    padding: 16px;
-    padding-top: 0px;
+    padding: 0 16px 16px 16px;
+  }
+  .list-md {
+    margin: 0 16px;
+    .item-md {
+      background: #f6f6f6;
+      padding: 0 16px;
+    }
   }
 } 

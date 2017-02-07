@@ -12,6 +12,16 @@
 
     <ion-list>
       <ion-list-header>
+        Account
+      </ion-list-header>
+      <button ion-item menuClose *ngFor="let p of loggedOutPages" (click)="openPage(p)">
+        <ion-icon item-left [name]="p.icon" [color]="isActive(p)"></ion-icon>
+        {{p.title}}
+      </button>
+    </ion-list>
+
+    <ion-list>
+      <ion-list-header>
         Navigate
       </ion-list-header>
       <button ion-item menuClose *ngFor="let p of appPages" (click)="openPage(p)">
@@ -20,15 +30,9 @@
       </button>
     </ion-list>
 
-    <ion-list>
-      <ion-list-header>
-        Account
-      </ion-list-header>
-      <button ion-item menuClose *ngFor="let p of loggedOutPages" (click)="openPage(p)">
-        <ion-icon item-left [name]="p.icon" [color]="isActive(p)"></ion-icon>
-        {{p.title}}
-      </button>
-    </ion-list>
+    <img src="assets/img/ng-vikings-logo.jpg" alt="ngvikings" class="ng-vikings-logo" />
+    <h2 class="ng-vikings-title"><strong>ngVikings 2017</strong><br />11-12/02/2017<br />Copenhagen #CPH</h2>
+    <p class="ng-vikings-credit">Made with <span class="love">&hearts;</span> by<br /><a href="https://twitter.com/samvloeberghs" target="_blank">Sam Vloeberghs</a><br /><a href="https://twitter.com/samverschueren" target="_blank">Sam Verschueren</a></p>
 
   </ion-content>
 
@@ -45,14 +49,16 @@
 
   <ion-content class="outer-content">
 
-    <ion-list>
-      <ion-list-header>
-        Navigate
-      </ion-list-header>
-      <button ion-item menuClose *ngFor="let p of appPages" (click)="openPage(p)">
-        <ion-icon item-left [name]="p.icon" [color]="isActive(p)"></ion-icon>
-        {{p.title}}
-      </button>
+    <ion-list no-lines>
+      <ion-item *ngIf="currentUser">
+        <ion-avatar item-left>
+          <img [src]="currentUser.photoURL">
+        </ion-avatar>
+        <h3>Welcome {{currentUser.displayName}}</h3>
+        <p>
+          Enjoy the conference!
+        </p>
+      </ion-item>
     </ion-list>
 
     <ion-list>
@@ -64,6 +70,20 @@
         {{p.title}}
       </button>
     </ion-list>
+
+    <ion-list>
+      <ion-list-header>
+        Navigate
+      </ion-list-header>
+      <button ion-item menuClose *ngFor="let p of appPages" (click)="openPage(p)">
+        <ion-icon item-left [name]="p.icon" [color]="isActive(p)"></ion-icon>
+        {{p.title}}
+      </button>
+    </ion-list>
+
+    <img src="assets/img/ng-vikings-logo.jpg" alt="ngvikings" class="ng-vikings-logo" />
+    <h2 class="ng-vikings-title"><strong>ngVikings 2017</strong><br />11-12/02/2017<br />Copenhagen #CPH</h2>
+    <p class="ng-vikings-credit">Made with <span class="love">&hearts;</span> by<br /><a href="https://twitter.com/samvloeberghs" target="_blank">Sam Vloeberghs</a><br /><a href="https://twitter.com/samverschueren" target="_blank">Sam Verschueren</a></p>
 
   </ion-content>
 
