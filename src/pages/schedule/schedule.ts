@@ -30,12 +30,9 @@ import { FavoritesService } from '../../shared/services/favorites.service';
   templateUrl: 'schedule.html'
 })
 export class SchedulePage implements OnInit {
-  // the list is a child of the schedule page
-  // @ViewChild('scheduleList') gets a reference to the list
-  // with the variable #scheduleList, `read: List` tells it to return
-  // the List and not a reference to the element
+
   @ViewChild('scheduleList', {read: List}) scheduleList: List;
-;
+
   segment = 'all';
   groups: any = [];
 
