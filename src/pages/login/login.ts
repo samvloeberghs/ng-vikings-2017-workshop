@@ -12,12 +12,7 @@ export class LoginPage {
   login: {username?: string, password?: string} = {};
   submitted = false;
 
-  constructor(public navCtrl: NavController,
-              private app: App) {
-  }
-
-  ionViewDidLoad() {
-    this.app.setTitle('Login - ngVikings 2017');
+  constructor(public navCtrl: NavController) {
   }
 
   onLogin(form: NgForm) {

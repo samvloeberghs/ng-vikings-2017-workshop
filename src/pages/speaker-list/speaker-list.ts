@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { App, ActionSheet, NavController } from 'ionic-angular';
+import { ActionSheet, NavController } from 'ionic-angular';
 
 import { SpeakerDetailPage } from '../speaker-detail/speaker-detail';
 import { Speaker } from '../../shared/entities';
@@ -16,11 +16,9 @@ export class SpeakerListPage {
 
   constructor(private navCtrl: NavController,
               private confData: ConferenceDataService,
-              private urlService: URLService,
-              private app: App) { }
+              private urlService: URLService) { }
 
   ionViewDidLoad() {
-    this.app.setTitle('Speakers - ngVikings 2017');
     this.speakers$ = this.confData.rpSpeakers$;
   }
 
