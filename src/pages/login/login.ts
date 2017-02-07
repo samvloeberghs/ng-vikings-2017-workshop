@@ -3,7 +3,6 @@ import { NgForm } from '@angular/forms';
 import { NavController, App } from 'ionic-angular';
 
 import { TabsPage } from '../tabs/tabs';
-import { UserData } from '../../providers/user-data';
 
 @Component({
   selector: 'page-login',

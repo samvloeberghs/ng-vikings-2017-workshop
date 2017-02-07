@@ -23,7 +23,6 @@ import { SessionDetailPage } from '../session-detail/session-detail';
 import { ConferenceDataService, ConnectionService } from '../../shared/services';
 import { Session, SessionGroup } from '../../shared/entities';
 import { ToggleResult } from './entities';
-import { LoginPage } from '../login/login';
 import { FavoritesService } from '../../shared/services/favorites.service';
 
 @Component({
