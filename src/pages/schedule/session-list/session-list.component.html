@@ -17,39 +17,3 @@
   </ion-item-group>
 
 </ion-list>
-<!--
-<ion-list>
-
-  <ion-item-group *ngFor="let group of groups">
-
-    <ion-item-divider sticky>
-      <ion-label>
-        {{group.startHour}}:00h
-      </ion-label>
-    </ion-item-divider>
-
-    <ion-item-sliding *ngFor="let session of group.sessions" #slidingItem [attr.track]="session.tracks[0] | lowercase" [hidden]="session.hide">
-
-      <button ion-item (click)="goToSessionDetail(session)">
-        <h3>{{session.name}}</h3>
-        <p>
-          {{session.timeStart}} &mdash;
-          {{session.timeEnd}}:
-          {{session.location}}
-        </p>
-      </button>
-
-      <ion-item-options>
-        <button ion-button color="favorite" (click)="addFavorite(slidingItem, session)" *ngIf="segment === 'all'">
-          Favorite
-        </button>
-        <button ion-button color="danger" (click)="removeFavorite(slidingItem, session, 'Remove Favorite')" *ngIf="segment === 'favorites'">
-          Remove
-        </button>
-      </ion-item-options>
-
-    </ion-item-sliding>
-
-  </ion-item-group>
-
-</ion-list>-->

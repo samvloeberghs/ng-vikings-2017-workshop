@@ -1,6 +1,6 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 
-import { ConferenceDataService, URLService, ConnectionService } from './services';
+import { ConferenceDataService, URLService, ConnectionService, FavoritesService } from './services';
 
 @NgModule({
   imports: [],
@@ -15,6 +15,7 @@ export class SharedModule {
       providers: [
         ConferenceDataService,
         URLService,
+        FavoritesService,
         ConnectionService
       ]
     }

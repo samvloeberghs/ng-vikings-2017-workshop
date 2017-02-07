@@ -1,6 +1,5 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { Events, MenuController, Nav, Platform, App, IonicApp } from 'ionic-angular';
-import { Splashscreen } from 'ionic-native';
 
 import { LoginPage } from '../pages/login/login';
 import { TabsPage } from '../pages/tabs/tabs';
@@ -48,7 +47,7 @@ export class ConferenceApp implements OnInit {
               private ionicApp: IonicApp) {
   }
 
-  ngOnInit(){
+  ngOnInit() {
     this.initApplication();
     this.setupBackButtonBehavior();
   }
@@ -69,7 +68,7 @@ export class ConferenceApp implements OnInit {
     if (page.logsOut === true) {
       // Give the menu time to close before changing to logged out
       setTimeout(() => {
-       // do logout
+        // do logout
       }, 1000);
     }
   }
@@ -97,12 +96,7 @@ export class ConferenceApp implements OnInit {
     return;
   }
 
-  private initApplication(){
-    // Call any initial plugins when ready
-    this.platform.ready().then(() => {
-      Splashscreen.hide();
-    });
-
+  private initApplication() {
     this.listenToLoginEvents();
   }
 
