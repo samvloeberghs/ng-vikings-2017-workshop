@@ -6,6 +6,7 @@ import { Storage } from '@ionic/storage';
 
 // app imports
 import { Speaker, Session, SessionGroup } from '../entities';
+import { FavoritesService } from './favorites.service';
 
 @Injectable()
 export class ConferenceDataService {
@@ -20,7 +21,8 @@ export class ConferenceDataService {
 
   // for every public stream we had to create a replay subject (otherwise it would only listen to it once)
   constructor(private af: AngularFire,
-              private storage: Storage) {
+              private storage: Storage,
+              private favoritesService: FavoritesService) {
 
     this.sessions$
       .map((sessions: Session[]) => {
@@ -32,6 +34,7 @@ export class ConferenceDataService {
           session.speakers = [];
 
           delete session.roomId;
+          this.favoritesService.checkFavorite(session);
 
           return session;
         });
@@ -109,7 +112,7 @@ export class ConferenceDataService {
 
   private prefetch(url: string) {
     if (url) {
-      const img = new Image()
+      const img = new Image();
       img.src = url;
     }
   }

@@ -24,6 +24,7 @@ import { ConferenceDataService, ConnectionService } from '../../shared/services'
 import { Session, SessionGroup } from '../../shared/entities';
 import { ToggleResult } from './entities';
 import { LoginPage } from '../login/login';
+import { FavoritesService } from '../../shared/services/favorites.service';
 
 @Component({
   selector: 'page-schedule',
@@ -37,15 +38,12 @@ export class SchedulePage implements OnInit {
   @ViewChild('scheduleList', {read: List}) scheduleList: List;
 ;
   segment = 'all';
-  excludeTracks: any = [];
-  shownSessions: any = [];
   groups: any = [];
-  loader: Loading;
 
   groups$: Observable<SessionGroup[]>;
   search$ = new BehaviorSubject<string>('');
 
-  private isAuthenticated = false;
+  private loader: Loading;
 
   constructor(private alertCtrl: AlertController,
               private toastCtrl: ToastController,
@@ -54,6 +52,7 @@ export class SchedulePage implements OnInit {
               private modalCtrl: ModalController,
               private navCtrl: NavController,
               private confData: ConferenceDataService,
+              private favoritesService: FavoritesService,
               private connectionService: ConnectionService) {
   }
 
@@ -62,7 +61,7 @@ export class SchedulePage implements OnInit {
     this.updateSchedule();
   }
 
-  ngOnInit(){
+  ngOnInit() {
     this.presentLoader();
   }
 
@@ -79,8 +78,7 @@ export class SchedulePage implements OnInit {
 
           for (const group of filteredGroups) {
             group.sessions = group.sessions.filter(session => {
-              const show = this.segment === 'all';// || this.user.hasFavorite(session.title);
-
+              const show = this.segment === 'all' || (this.segment === 'favorites' && session.favorited);
               return show && session.title.toLowerCase().indexOf(term) !== -1;
             });
           }
@@ -98,10 +96,10 @@ export class SchedulePage implements OnInit {
   }
 
   toggleFavorite({slidingItem, session}: ToggleResult) {
-    if (true/*this.user.hasFavorite(session.title)*/) {
+    if (session.favorited) {
       const alert = this.alertCtrl.create({
         title: 'Defavorite',
-        message: 'Would you like to remove this session from your favorites?',
+        message: 'Are you sure you would like to remove this session from your favorites?',
         buttons: [
           {
             text: 'Cancel',
@@ -111,7 +109,7 @@ export class SchedulePage implements OnInit {
             }
           },
           {
-            text: 'Defavorite',
+            text: 'Yes, defavorite',
             handler: () => {
               this.toggleFavoriteToast(session, slidingItem);
             }
@@ -122,68 +120,25 @@ export class SchedulePage implements OnInit {
       // now present the alert on top of all other content
       alert.present();
     } else {
-      //this.toggleFavoriteToast(session, slidingItem);
+      this.toggleFavoriteToast(session, slidingItem);
     }
   }
 
   private toggleFavoriteToast(session: Session, slidingItem: ItemSliding) {
-    const isFavorite = true;//this.user.hasFavorite(session.title);
 
-    if (!this.connectionService.isConnected()) {
+    this.presentLoader();
+    this.favoritesService.toggleFavorite(session).then(() => {
       const toast = this.toastCtrl.create({
-        message: `You need an internet connection to ${isFavorite ? 'defavorite' : 'favorite'} the session.`,
+        message: session.favorited ? 'Session has been favorited' : 'Session has been defavorited',
         showCloseButton: true,
         closeButtonText: 'close',
         duration: 3000
       });
       toast.present();
-    } else if (this.isAuthenticated) {
-      // if (!isFavorite) {
-      //   this.conferenceData.setFavorite(session.$key);
-      // } else {
-      //   this.conferenceData.removeFavorite(session.favorite.$key);
-      //   delete session.favorite;
-      // }
+      slidingItem.close();
+      this.closeLoader();
+    });
 
-      // TODO add favorite to Firebase, see code ^^
-      if (!isFavorite) {
-        //this.user.addFavorite(session.title);
-      } else {
-        //this.user.removeFavorite(session.title);
-      }
-
-      const toast = this.toastCtrl.create({
-        message: isFavorite ? 'Session has been favorited' : 'Session has been defavorited',
-        showCloseButton: true,
-        closeButtonText: 'close',
-        duration: 3000
-      });
-      toast.present();
-    } else {
-      const alert = this.alertCtrl.create({
-        title: 'Not logged in',
-        message: 'You need to be logged in to favorite the session.',
-        buttons: [
-          {
-            text: 'Cancel',
-            handler: () => {
-            }
-          },
-          {
-            text: 'Go to login',
-            handler: () => {
-              this.navCtrl.push(LoginPage);
-              alert.dismiss();
-            }
-          }
-        ]
-      });
-
-      // now present the alert on top of all other content
-      alert.present();
-    }
-
-    slidingItem.close();
   }
 
   private presentLoader() {
