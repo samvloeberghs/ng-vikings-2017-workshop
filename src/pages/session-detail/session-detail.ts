@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {
-  NavParams, NavController, App, ToastController, AlertController, LoadingController,
+  NavParams, NavController, ToastController, AlertController, LoadingController,
   Loading
 } from 'ionic-angular';
 
@@ -22,13 +22,8 @@ export class SessionDetailPage {
               private favoritesService: FavoritesService,
               private alertCtrl: AlertController,
               private toastCtrl: ToastController,
-              private loadingCtrl: LoadingController,
-              private app: App) {
+              private loadingCtrl: LoadingController) {
     this.session = navParams.data;
-  }
-
-  ionViewDidLoad() {
-    this.app.setTitle(this.session.title + ' - Sessions - ngVikings 2017');
   }
 
   toggleFavorite() {
@@ -81,7 +76,7 @@ export class SessionDetailPage {
 
   private presentLoader() {
     this.loader = this.loadingCtrl.create({
-      content: "Please wait..."
+      content: 'Please wait...'
     });
     this.loader.present();
   }

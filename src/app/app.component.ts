@@ -1,5 +1,5 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
-import { Events, MenuController, Nav, Platform, App, IonicApp } from 'ionic-angular';
+import { Events, MenuController, Nav, App, IonicApp } from 'ionic-angular';
 
 import { LoginPage } from '../pages/login/login';
 import { TabsPage } from '../pages/tabs/tabs';
@@ -42,7 +42,6 @@ export class ConferenceApp implements OnInit {
 
   constructor(private events: Events,
               private menu: MenuController,
-              private platform: Platform,
               private app: App,
               private ionicApp: IonicApp) {
   }
@@ -61,7 +60,7 @@ export class ConferenceApp implements OnInit {
       this.nav.setRoot(page.component, {tabIndex: page.index});
     } else {
       this.nav.setRoot(page.component).catch(() => {
-        console.log("Didn't set nav root");
+        console.log(`Didn't set nav root`);
       });
     }
 
@@ -113,10 +112,10 @@ export class ConferenceApp implements OnInit {
   private setupBackButtonBehavior() {
 
     // If on web version (browser)
-    if (window.location.protocol !== "file:") {
+    if (window.location.protocol !== 'file:') {
 
       // Listen to browser pages
-      this.events.subscribe("navController:current", (navCtrlData: any) => {
+      this.events.subscribe('navController:current', (navCtrlData: any) => {
         this.innerNavCtrl = navCtrlData[0];
       });
 
@@ -155,7 +154,7 @@ export class ConferenceApp implements OnInit {
 
       // Fake browser history on each view enter
       this.app.viewDidEnter.subscribe(() => {
-        history.pushState(null, null, "");
+        history.pushState(null, null, '');
       });
 
     }

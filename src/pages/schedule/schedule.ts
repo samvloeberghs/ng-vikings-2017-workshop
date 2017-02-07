@@ -4,7 +4,6 @@ import {
   ToastController,
   LoadingController,
   Loading,
-  App,
   ItemSliding,
   List,
   NavController
@@ -42,7 +41,6 @@ export class SchedulePage implements OnInit {
 
   constructor(private alertCtrl: AlertController,
               private toastCtrl: ToastController,
-              private app: App,
               private loadingCtrl: LoadingController,
               private navCtrl: NavController,
               private confData: ConferenceDataService,
@@ -50,7 +48,6 @@ export class SchedulePage implements OnInit {
   }
 
   ionViewDidLoad() {
-    this.app.setTitle('Schedule - ngVikings 2017');
     this.updateSchedule();
   }
 
@@ -79,7 +76,10 @@ export class SchedulePage implements OnInit {
           return filteredGroups.filter(group => group.sessions.length > 0);
         });
     });
-    this.closeLoader();
+
+    this.groups$.subscribe(() => {
+      this.closeLoader();
+    });
   }
 
   goToSessionDetail(session: Session) {
@@ -136,7 +136,7 @@ export class SchedulePage implements OnInit {
 
   private presentLoader() {
     this.loader = this.loadingCtrl.create({
-      content: "Please wait..."
+      content: 'Please wait...'
     });
     this.loader.present();
   }
