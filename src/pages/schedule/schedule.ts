@@ -7,7 +7,6 @@ import {
   App,
   ItemSliding,
   List,
-  ModalController,
   NavController
 } from 'ionic-angular';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
@@ -20,7 +19,7 @@ import { Observable } from 'rxjs/Observable';
 // import moment from 'moment';
 
 import { SessionDetailPage } from '../session-detail/session-detail';
-import { ConferenceDataService, ConnectionService } from '../../shared/services';
+import { ConferenceDataService } from '../../shared/services';
 import { Session, SessionGroup } from '../../shared/entities';
 import { ToggleResult } from './entities';
 import { FavoritesService } from '../../shared/services/favorites.service';
@@ -45,11 +44,9 @@ export class SchedulePage implements OnInit {
               private toastCtrl: ToastController,
               private app: App,
               private loadingCtrl: LoadingController,
-              private modalCtrl: ModalController,
               private navCtrl: NavController,
               private confData: ConferenceDataService,
-              private favoritesService: FavoritesService,
-              private connectionService: ConnectionService) {
+              private favoritesService: FavoritesService) {
   }
 
   ionViewDidLoad() {
