@@ -34,7 +34,6 @@ export class ConferenceDataService {
           session.speakers = [];
 
           delete session.roomId;
-          this.favoritesService.checkFavorite(session);
 
           return session;
         });

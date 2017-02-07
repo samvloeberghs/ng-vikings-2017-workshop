@@ -1,4 +1,4 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
+import { Component, ViewChild, OnInit, OnDestroy } from '@angular/core';
 import {
   AlertController,
   ToastController,
@@ -10,6 +10,7 @@ import {
 } from 'ionic-angular';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
+import { Subscription } from 'rxjs/Subscription';
 
 /*
  To learn how to use third party libs in an
@@ -27,7 +28,7 @@ import { FavoritesService } from '../../shared/services/favorites.service';
   selector: 'page-schedule',
   templateUrl: 'schedule.html'
 })
-export class SchedulePage implements OnInit {
+export class SchedulePage implements OnInit, OnDestroy {
 
   @ViewChild('scheduleList', {read: List}) scheduleList: List;
 
@@ -37,7 +38,11 @@ export class SchedulePage implements OnInit {
   groups$: Observable<SessionGroup[]>;
   search$ = new BehaviorSubject<string>('');
 
+  emptyState: boolean = false;
+
   private loader: Loading;
+  private favorites: string[] = [];
+  private disposables: Subscription[] = [];
 
   constructor(private alertCtrl: AlertController,
               private toastCtrl: ToastController,
@@ -45,6 +50,7 @@ export class SchedulePage implements OnInit {
               private navCtrl: NavController,
               private confData: ConferenceDataService,
               private favoritesService: FavoritesService) {
+    this.setupSubscriptions();
   }
 
   ionViewDidLoad() {
@@ -53,6 +59,12 @@ export class SchedulePage implements OnInit {
 
   ngOnInit() {
     this.presentLoader();
+  }
+
+  ngOnDestroy() {
+    for (const disposable of this.disposables) {
+      disposable.unsubscribe();
+    }
   }
 
   updateSchedule() {
@@ -64,16 +76,33 @@ export class SchedulePage implements OnInit {
 
       return this.confData.rpSessionGroups$
         .map(groups => {
-          const filteredGroups: SessionGroup[] = groups.map(group => Object.assign({}, group));
+          let hiddenGroups = 0;
 
-          for (const group of filteredGroups) {
-            group.sessions = group.sessions.filter(session => {
-              const show = this.segment === 'all' || (this.segment === 'favorites' && session.favorited);
-              return show && session.title.toLowerCase().indexOf(term) !== -1;
-            });
+          for (const group of groups) {
+            let hiddenSessions = 0;
+
+            for (const session of group.sessions) {
+              session.favorited = this.favorites.indexOf(session.$key) !== -1;
+
+              const hidden = this.segment === 'favorites' && !session.favorited;
+
+              session.hidden = hidden || session.title.toLowerCase().indexOf(term) === -1;
+
+              if (session.hidden) {
+                hiddenSessions++;
+              }
+            }
+
+            group.hidden = group.sessions.length === hiddenSessions;
+
+            if (group.hidden) {
+              hiddenGroups++;
+            }
           }
 
-          return filteredGroups.filter(group => group.sessions.length > 0);
+          this.emptyState = groups.length === hiddenGroups;
+
+          return groups;
         });
     });
 
@@ -115,6 +144,16 @@ export class SchedulePage implements OnInit {
     } else {
       this.toggleFavoriteToast(session, slidingItem);
     }
+  }
+
+  private setupSubscriptions() {
+    this.disposables.push(
+      this.favoritesService.favorites$.subscribe(favorites => {
+        this.favorites = favorites;
+
+        this.updateSchedule();
+      })
+    );
   }
 
   private toggleFavoriteToast(session: Session, slidingItem: ItemSliding) {
