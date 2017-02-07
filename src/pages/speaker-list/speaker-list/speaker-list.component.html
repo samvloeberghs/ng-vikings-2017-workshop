@@ -1,6 +1,6 @@
 <ion-card *ngFor="let speaker of speakers" class="speaker-card">
 
-  <ion-card-header>
+  <ion-card-header (click)="select.emit(speaker)">
     <ion-item>
       <ion-avatar item-left>
         <img [src]="speaker.avatar" alt="Speaker profile pic">
@@ -11,7 +11,7 @@
   </ion-card-header>
 
   <ion-card-content class="outer-content">
-    <p>{{speaker.description}}</p>
+    <p>{{speaker.description.substr(0, 160) + '...'}}</p>
 
     <ion-list>
      <button ion-item (click)="select.emit(speaker)">

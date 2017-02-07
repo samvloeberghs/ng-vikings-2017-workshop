@@ -1,0 +1,44 @@
+.ng-vikings-logo {
+  display: block;
+  width: 35%;
+  margin: 15px auto 0 auto;
+}
+
+.ng-vikings-title {
+  text: {
+    align: center;
+  }
+  font: {
+    size: 16px;
+  }
+  margin: {
+    top: 5px;
+  }
+}
+
+.ng-vikings-credit {
+  font: {
+    size: 12px;
+  }
+  text: {
+    align: center;
+  }
+  span.love {
+    color: #e00336;
+  }
+}
+
+// ANDROID
+.list-header-md {
+  margin: {
+    bottom: 0;
+  }
+  border: {
+    bottom: 1px solid #dedede;
+  }
+}
+
+// IOS
+.list-ios {
+  margin: -1px 0 10px 0;
+}

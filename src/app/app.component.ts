@@ -1,10 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
-import { Events, MenuController, Nav, Platform } from 'ionic-angular';
+import { Events, MenuController, Nav, Platform, App, IonicApp } from 'ionic-angular';
 import { Splashscreen } from 'ionic-native';
 
-import { AccountPage } from '../pages/account/account';
 import { LoginPage } from '../pages/login/login';
-import { SignupPage } from '../pages/signup/signup';
 import { TabsPage } from '../pages/tabs/tabs';
 import { SchedulePage } from '../pages/schedule/schedule';
 import { SpeakerListPage } from '../pages/speaker-list/speaker-list';
@@ -32,32 +30,39 @@ export class ConferenceApp {
   // the left menu only works after login
   // the login page disables the left menu
   appPages: PageInterface[] = [
-    { title: 'Schedule', component: TabsPage, tabComponent: SchedulePage, icon: 'calendar' },
-    { title: 'Speakers', component: TabsPage, tabComponent: SpeakerListPage, index: 1, icon: 'contacts' },
+    {title: 'Schedule', component: TabsPage, tabComponent: SchedulePage, icon: 'calendar'},
+    {title: 'Speakers', component: TabsPage, tabComponent: SpeakerListPage, index: 1, icon: 'contacts'},
   ];
   loggedInPages: PageInterface[] = [
-    { title: 'Account', component: AccountPage, icon: 'person' },
-    { title: 'Logout', component: TabsPage, icon: 'log-out', logsOut: true }
+    {title: 'Logout', component: TabsPage, icon: 'log-out', logsOut: true}
   ];
   loggedOutPages: PageInterface[] = [
-    { title: 'Login', component: LoginPage, icon: 'log-in' },
-    { title: 'Signup', component: SignupPage, icon: 'person-add' }
+    {title: 'Login', component: LoginPage, icon: 'log-in'}
   ];
-  rootPage: any;
+  rootPage: any = TabsPage;
 
-  constructor(
-    public events: Events,
-    public userData: UserData,
-    public menu: MenuController,
-    public platform: Platform,
-    public confData: ConferenceData
-  ) {
+  private innerNavCtrl: any;
 
-    this.rootPage = TabsPage;
-    this.platformReady();
+  constructor(public events: Events,
+              public userData: UserData,
+              public menu: MenuController,
+              public platform: Platform,
+              public confData: ConferenceData,
+              private app: App,
+              private ionicApp: IonicApp) {
+
+    this.initApplication();
+    this.setupBackButtonBehavior();
+  }
+
+  initApplication(){
+    // Call any initial plugins when ready
+    this.platform.ready().then(() => {
+      Splashscreen.hide();
+    });
 
     // load the conference data
-    confData.load();
+    this.confData.load();
 
     // decide which menu items should be hidden by current login status stored in local storage
     this.userData.hasLoggedIn().then((hasLoggedIn) => {
@@ -72,7 +77,7 @@ export class ConferenceApp {
     // reset the nav to remove previous pages and only have this page
     // we wouldn't want the back button to show in this scenario
     if (page.index) {
-      this.nav.setRoot(page.component, { tabIndex: page.index });
+      this.nav.setRoot(page.component, {tabIndex: page.index});
     } else {
       this.nav.setRoot(page.component).catch(() => {
         console.log("Didn't set nav root");
@@ -92,10 +97,6 @@ export class ConferenceApp {
       this.enableMenu(true);
     });
 
-    this.events.subscribe('user:signup', () => {
-      this.enableMenu(true);
-    });
-
     this.events.subscribe('user:logout', () => {
       this.enableMenu(false);
     });
@@ -104,13 +105,6 @@ export class ConferenceApp {
   enableMenu(loggedIn: boolean) {
     this.menu.enable(loggedIn, 'loggedInMenu');
     this.menu.enable(!loggedIn, 'loggedOutMenu');
-  }
-
-  platformReady() {
-    // Call any initial plugins when ready
-    this.platform.ready().then(() => {
-      Splashscreen.hide();
-    });
   }
 
   isActive(page: PageInterface) {
@@ -129,4 +123,57 @@ export class ConferenceApp {
     }
     return;
   }
+
+  private setupBackButtonBehavior() {
+
+    // If on web version (browser)
+    if (window.location.protocol !== "file:") {
+
+      // Listen to browser pages
+      this.events.subscribe("navController:current", (navCtrlData: any) => {
+        this.innerNavCtrl = navCtrlData[0];
+      });
+
+      // Register browser back button action(s)
+      window.onpopstate = (evt) => {
+
+        // Close menu if open
+        if (this.menu.isOpen()) {
+          this.menu.close();
+          return;
+        }
+
+        // Close any active modals or overlays
+        let activePortal = this.ionicApp._loadingPortal.getActive() ||
+          this.ionicApp._modalPortal.getActive() ||
+          //this.ionicApp._toastPortal.getActive() ||
+          this.ionicApp._overlayPortal.getActive();
+
+        if (activePortal) {
+          activePortal.dismiss();
+          return;
+        }
+
+        // Navigate back on main active nav if there's a page loaded
+        if (this.app.getActiveNav().canGoBack()) {
+          this.app.getActiveNav().pop();
+        } else {
+          // Navigate back on subloaded nav if notified
+          if (this.innerNavCtrl && this.innerNavCtrl.canGoBack()) {
+            this.innerNavCtrl.pop();
+
+          }
+        }
+
+      };
+
+      // Fake browser history on each view enter
+      this.app.viewDidEnter.subscribe(() => {
+        history.pushState(null, null, "");
+      });
+
+    }
+
+  }
+
 }

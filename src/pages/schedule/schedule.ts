@@ -54,7 +54,7 @@ export class SchedulePage {
   ) {}
 
   ionViewDidLoad() {
-    this.app.setTitle('Schedule');
+    this.app.setTitle('Schedule - ngVikings 2017');
     this.updateSchedule();
   }
 

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, App } from 'ionic-angular';
 
 import { SessionDetailPage } from '../session-detail/session-detail';
 import { URLService } from '../../shared/services';
@@ -14,8 +14,13 @@ export class SpeakerDetailPage {
 
   constructor(private navCtrl: NavController,
               private navParams: NavParams,
-              private urlService: URLService) {
+              private urlService: URLService,
+              private app: App) {
     this.speaker = this.navParams.data;
+  }
+
+  ionViewDidLoad() {
+    this.app.setTitle(this.speaker.name + ' - Speakers - ngVikings 2017');
   }
 
   goToSessionDetail(session: Session) {
