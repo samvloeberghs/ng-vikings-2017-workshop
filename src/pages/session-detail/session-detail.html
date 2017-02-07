@@ -17,7 +17,7 @@
     (favorite)="toggleFavorite()">
   </session-actions>
 
-  <img *ngIf="session.image" [src]=[session.image] alt="{{session.title}}" />
+  <img *ngIf="session.image" [src]="session.image" alt="{{session.title}}" />
 
   <h3>Description:</h3>
   <div [innerHtml]="session.description"></div>

@@ -60,7 +60,7 @@ export class ConferenceApp implements OnInit {
       this.nav.setRoot(page.component, {tabIndex: page.index});
     } else {
       this.nav.setRoot(page.component).catch(() => {
-        console.log('Didnt set nav root');
+        console.log(`Didn't set nav root`);
       });
     }
 
