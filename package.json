@@ -1,6 +1,7 @@
 {
   "name": "ng-vikings-2017-workshop",
   "description": "ngVikings 2017",
+  "version": "0.0.0",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
@@ -10,8 +11,9 @@
     "ionic_copy": "./config/copy.config.js"
   },
   "scripts": {
-    "build": "ionic-app-scripts build",
+    "build": "npm run ionic:build",
     "clean": "ionic-app-scripts clean",
+    "preionic:build": "node ./config/update-sw",
     "ionic:build": "ionic-app-scripts build",
     "ionic:serve": "ionic-app-scripts serve"
   },
