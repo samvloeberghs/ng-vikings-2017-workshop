@@ -6,8 +6,8 @@
       {{session.endDate | date:'HH:mm'}}:
       {{session.room}}
     </p>
-    <ion-icon name="bookmark" item-right color="primary" *ngIf="!session.favorited && options"></ion-icon>
-    <ion-icon name="bookmark" item-right color="secondary" *ngIf="session.favorited && options"></ion-icon>
+    <ion-icon name="bookmark" item-right *ngIf="!session.favorited && options"></ion-icon>
+    <ion-icon name="bookmark" item-right color="primary" *ngIf="session.favorited && options"></ion-icon>
   </ion-item>
 
   <ion-item-options>
