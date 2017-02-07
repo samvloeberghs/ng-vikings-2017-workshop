@@ -15,12 +15,11 @@ export class FavoritesService {
       try {
         let favorites: [string] = JSON.parse(favoritesJson);
         const favoriteIdx = favorites.indexOf(session.$key);
-        if (favoriteIdx > -1) {
-          session.favorited = true;
-        }
+        session.favorited = (favoriteIdx > -1);
       }
       catch (e) {
         console.log('No favorites set yet');
+        session.favorited = false;
       }
     });
   }
