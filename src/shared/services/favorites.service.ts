@@ -13,7 +13,7 @@ export class FavoritesService {
   checkFavorite(session: Session) {
     this.storage.get('favorites').then(favoritesJson => {
       try {
-        let favorites: [string] = JSON.parse(favoritesJson);
+        const favorites: [string] = JSON.parse(favoritesJson);
         const favoriteIdx = favorites.indexOf(session.$key);
         session.favorited = (favoriteIdx > -1);
       }
