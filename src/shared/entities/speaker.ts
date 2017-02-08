@@ -10,4 +10,5 @@ export interface Speaker {
     twitter?: string;
     github?: string;
   }
+  hidden: boolean;
 };

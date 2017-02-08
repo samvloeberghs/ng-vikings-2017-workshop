@@ -1,4 +1,4 @@
-<ion-card *ngFor="let speaker of speakers" class="speaker-card">
+<ion-card *ngFor="let speaker of speakers" class="speaker-card" [hidden]="speaker.hidden">
 
   <ion-card-header (click)="select.emit(speaker)">
     <ion-item>
@@ -11,7 +11,7 @@
   </ion-card-header>
 
   <ion-card-content class="outer-content">
-    <p>{{speaker.description.substr(0, 160) + '...'}}</p>
+    <p>{{speaker.description.substr(0, 150) + '...'}}</p>
 
     <ion-list>
      <button ion-item (click)="select.emit(speaker)">

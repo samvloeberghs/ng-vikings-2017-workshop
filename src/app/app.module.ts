@@ -11,7 +11,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 // App Modules
 import { ScheduleModule } from '../pages/schedule';
 import { SessionDetailModule } from '../pages/session-detail';
-import { SpeakerListModule } from '../pages/speaker-list';
+import { SpeakersModule } from '../pages/speakers';
 import { SpeakerDetailModule } from '../pages/speaker-detail';
 import { SharedModule } from '../shared/shared.module';
 
@@ -27,7 +27,7 @@ import { SharedModule } from '../shared/shared.module';
     SharedModule.forRoot(),
     ScheduleModule,
     SessionDetailModule,
-    SpeakerListModule,
+    SpeakersModule,
     SpeakerDetailModule
   ],
   bootstrap: [IonicApp],
@@ -38,4 +38,5 @@ import { SharedModule } from '../shared/shared.module';
   ],
   providers: [Storage]
 })
-export class AppModule { }
+export class AppModule {
+}
