@@ -11,11 +11,15 @@ export class FavoritesService {
   favorites$ = new ReplaySubject<string[]>();
 
   constructor(private storage: Storage) {
-    this.storage.get('favorites')
-      .then(JSON.parse)
-      .then(favorites => {
-        this.favorites$.next(favorites || []);
-      });
+    try {
+      this.storage.get('favorites')
+        .then(JSON.parse)
+        .then(favorites => {
+          this.favorites$.next(favorites || []);
+        });
+    } catch (err) {
+      this.favorites$.next([]);
+    }
   }
 
   toggleFavorite(session: Session): Promise<boolean> {
