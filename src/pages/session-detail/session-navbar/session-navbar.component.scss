@@ -1,0 +1,17 @@
+session-navbar {
+  ion-buttons:not(.bar-buttons-ios) {
+    ion-icon {
+      color: white !important;
+    }
+  }
+
+  ion-buttons {
+    ion-icon {
+      opacity: 0.3;
+
+      &.favorited {
+        opacity: 1;
+      }
+    }
+  }
+}
