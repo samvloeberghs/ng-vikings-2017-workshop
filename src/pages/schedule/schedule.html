@@ -27,14 +27,14 @@
 
 <ion-content>
   <session-list
-    *ngIf="(groups$ | async)?.length > 0"
+    *ngIf="!emptyState"
     [groups]="groups$ | async"
     [options]="segment === 'all'"
     (toggle)="toggleFavorite($event)"
     (select)="goToSessionDetail($event)">
   </session-list>
 
-  <ion-list-header *ngIf="(groups$ | async)?.length === 0">
+  <ion-list-header *ngIf="emptyState">
       No Sessions Found
   </ion-list-header>
 

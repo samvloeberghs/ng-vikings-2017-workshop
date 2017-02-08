@@ -1,33 +1,26 @@
 // 3d party imports
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
+import { ReplaySubject } from 'rxjs/ReplaySubject';
+
 import { Session } from '../entities/session';
 
 @Injectable()
 export class FavoritesService {
 
+  favorites$ = new ReplaySubject<string[]>();
+
   constructor(private storage: Storage) {
-
-  }
-
-  checkFavorite(session: Session) {
-    this.storage.get('favorites').then(favoritesJson => {
-      try {
-        const favorites: [string] = JSON.parse(favoritesJson);
-        const favoriteIdx = favorites.indexOf(session.$key);
-        session.favorited = (favoriteIdx > -1);
-      }
-      catch (e) {
-        console.log('No favorites set yet');
-        session.favorited = false;
-      }
-    });
+    this.storage.get('favorites')
+      .then(JSON.parse)
+      .then(favorites => {
+        this.favorites$.next(favorites || []);
+      });
   }
 
   toggleFavorite(session: Session): Promise<boolean> {
     return new Promise((resolve) => {
       this.storage.get('favorites').then(favoritesJson => {
-
         let favorites: [string];
         try {
           favorites = JSON.parse(favoritesJson);
@@ -41,7 +34,7 @@ export class FavoritesService {
           favorites = [session.$key];
         }
         this.storage.set('favorites', JSON.stringify(favorites)).then(() => {
-          session.favorited = !session.favorited;
+          this.favorites$.next(favorites);
           resolve(true);
         });
       });
