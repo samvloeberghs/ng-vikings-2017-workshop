@@ -72,9 +72,9 @@ export class ConferenceDataService {
       const groups: SessionGroup[] = [];
 
       for (let i = 0; i < 24; i++) {
-        const sessionsInGroup = sessions.filter((session) => {
-          return session.startDate.getHours() >= i && session.startDate.getHours() < (i + 1);
-        });
+        const sessionsInGroup = sessions
+          .filter(session => session.startDate.getHours() >= i && session.startDate.getHours() < (i + 1))
+          .sort((a, b) => a.startDate.getTime() - b.startDate.getTime());
 
         if (sessionsInGroup.length > 0) {
           groups.push({
