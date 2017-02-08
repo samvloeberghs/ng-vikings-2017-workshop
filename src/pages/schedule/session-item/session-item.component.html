@@ -2,8 +2,8 @@
   <ion-item (click)="select.next()">
     <h3>{{session.title}}</h3>
     <p>
-      {{session.startDate | date:'HH:mm'}} &mdash;
-      {{session.endDate | date:'HH:mm'}}:
+      {{session.startDate | tzDate:'HH:mm'}} &mdash;
+      {{session.endDate | tzDate:'HH:mm'}}:
       {{session.room}}
     </p>
     <ion-icon name="bookmark" item-right *ngIf="!session.favorited && options"></ion-icon>
