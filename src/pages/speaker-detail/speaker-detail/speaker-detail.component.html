@@ -23,7 +23,7 @@
 <p>{{speaker.description}}</p>
 
 <session-list
-  *ngIf="speaker.sessions && speaker.sessions.length > 0"
+  *ngIf="speaker.sessions && speaker.sessions.length > 0 && showSessions"
   [sessions]="speaker.sessions"
   (select)="session.emit($event)">
 </session-list>
