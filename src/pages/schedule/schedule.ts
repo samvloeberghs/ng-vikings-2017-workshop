@@ -69,7 +69,9 @@ export class SchedulePage implements OnInit, OnDestroy {
 
   updateSchedule() {
     // Close any open sliding items when the schedule updates
-    this.scheduleList && this.scheduleList.closeSlidingItems();
+    if (this.scheduleList) {
+      this.scheduleList.closeSlidingItems();
+    }
 
     this.groups$ = this.search$.switchMap(term => {
       term = typeof term === 'string' ? term.toLowerCase() : '';
@@ -106,7 +108,7 @@ export class SchedulePage implements OnInit, OnDestroy {
         });
     });
 
-    this.groups$.subscribe(() => {
+    this.groups$.take(1).subscribe(() => {
       this.closeLoader();
     });
   }
@@ -183,6 +185,7 @@ export class SchedulePage implements OnInit, OnDestroy {
   private closeLoader() {
     if (this.loader) {
       this.loader.dismissAll();
+      this.loader = null;
     }
   }
 
