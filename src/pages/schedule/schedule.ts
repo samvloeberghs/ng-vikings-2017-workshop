@@ -73,7 +73,7 @@ export class SchedulePage implements OnInit, OnDestroy {
       this.scheduleList.closeSlidingItems();
     }
 
-    this.groups$ = this.search$.switchMap(term => {
+    this.groups$ = this.search$.switchMap((term: string) => {
       term = typeof term === 'string' ? term.toLowerCase() : '';
 
       return this.confData.rpSessionGroups$

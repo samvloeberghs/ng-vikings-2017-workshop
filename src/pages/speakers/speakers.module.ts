@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { IonicModule } from 'ionic-angular';
 
 import { SharedModule } from '../../shared/shared.module';
-import { SpeakerListPage } from './speaker-list';
+import { SpeakersPage } from './speakers';
 import { SpeakerListComponent } from './speaker-list/speaker-list.component';
 
 @NgModule({
@@ -11,11 +11,11 @@ import { SpeakerListComponent } from './speaker-list/speaker-list.component';
     SharedModule  
   ],
   declarations: [
-    SpeakerListPage,
+    SpeakersPage,
     SpeakerListComponent
   ],
   entryComponents: [
-    SpeakerListPage
+    SpeakersPage
   ]
 })
-export class SpeakerListModule { } 
+export class SpeakersModule { }

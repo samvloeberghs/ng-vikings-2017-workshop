@@ -4,7 +4,7 @@ import { Events, MenuController, Nav, App, IonicApp } from 'ionic-angular';
 import { LoginPage } from '../pages/login/login';
 import { TabsPage } from '../pages/tabs/tabs';
 import { SchedulePage } from '../pages/schedule/schedule';
-import { SpeakerListPage } from '../pages/speaker-list/speaker-list';
+import { SpeakersPage } from '../pages/speakers/speakers';
 
 export interface PageInterface {
   title: string;
@@ -28,7 +28,7 @@ export class ConferenceApp implements OnInit {
   // the login page disables the left menu
   appPages: PageInterface[] = [
     {title: 'Schedule', component: TabsPage, tabComponent: SchedulePage, icon: 'calendar'},
-    {title: 'Speakers', component: TabsPage, tabComponent: SpeakerListPage, index: 1, icon: 'contacts'},
+    {title: 'Speakers', component: TabsPage, tabComponent: SpeakersPage, index: 1, icon: 'contacts'},
   ];
   loggedInPages: PageInterface[] = [
     {title: 'Logout', component: TabsPage, icon: 'log-out', logsOut: true}

@@ -5,6 +5,14 @@
     </button>
     <ion-title>Speakers</ion-title>
   </ion-navbar>
+
+  <ion-toolbar no-border-top>
+    <ion-searchbar color="primary"
+                   (ionInput)="search$.next($event.target.value)"
+                   placeholder="Search for speaker">
+    </ion-searchbar>
+  </ion-toolbar>
+
 </ion-header>
 
 <ion-content class="outer-content speaker-list">

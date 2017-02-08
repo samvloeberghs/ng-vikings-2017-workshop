@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavParams } from 'ionic-angular';
 
 import { SchedulePage } from '../schedule/schedule';
-import { SpeakerListPage } from '../speaker-list/speaker-list';
+import { SpeakersPage } from '../speakers/speakers';
 
 @Component({
   templateUrl: 'tabs.html'
@@ -10,7 +10,7 @@ import { SpeakerListPage } from '../speaker-list/speaker-list';
 export class TabsPage {
 
   tab1Root: any = SchedulePage;
-  tab2Root: any = SpeakerListPage;
+  tab2Root: any = SpeakersPage;
 
   mySelectedIndex: number;
 
