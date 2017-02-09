@@ -3,6 +3,7 @@ import {
   NavParams, NavController, ToastController, AlertController, LoadingController,
   Loading
 } from 'ionic-angular';
+import { GoogleAnalyticsService } from 'angular-ga';
 
 import { SpeakerDetailPage } from '../speaker-detail';
 import { Session, Speaker } from '../../shared/entities';
@@ -22,7 +23,8 @@ export class SessionDetailPage {
               private favoritesService: FavoritesService,
               private alertCtrl: AlertController,
               private toastCtrl: ToastController,
-              private loadingCtrl: LoadingController) {
+              private loadingCtrl: LoadingController,
+              private ga: GoogleAnalyticsService) {
     this.session = navParams.data;
   }
 
@@ -56,6 +58,12 @@ export class SessionDetailPage {
 
   goToSpeakerDetail(speaker: Speaker) {
     this.navCtrl.push(SpeakerDetailPage, speaker);
+  }
+
+  ionViewDidEnter() {
+    this.ga.pageview.emit({
+      page: `Session - ${this.session.title}`
+    });
   }
 
   private toggleFavoriteToast() {

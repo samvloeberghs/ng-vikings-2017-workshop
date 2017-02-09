@@ -8,6 +8,7 @@ import {
   List,
   NavController
 } from 'ionic-angular';
+import { GoogleAnalyticsService } from 'angular-ga';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
@@ -49,12 +50,19 @@ export class SchedulePage implements OnInit, OnDestroy {
               private loadingCtrl: LoadingController,
               private navCtrl: NavController,
               private confData: ConferenceDataService,
-              private favoritesService: FavoritesService) {
+              private favoritesService: FavoritesService,
+              private ga: GoogleAnalyticsService) {
     this.setupSubscriptions();
   }
 
   ionViewDidLoad() {
     this.updateSchedule();
+  }
+
+  ionViewDidEnter() {
+    this.ga.pageview.emit({
+      page: 'Schedule'
+    });
   }
 
   ngOnInit() {
