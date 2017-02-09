@@ -52,7 +52,7 @@ export class SpeakersPage {
 
   ionViewDidEnter() {
     this.ga.pageview.emit({
-      page: 'Speakers'
+      page: '/speakers'
     });
   }
 

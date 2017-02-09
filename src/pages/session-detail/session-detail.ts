@@ -62,7 +62,8 @@ export class SessionDetailPage {
 
   ionViewDidEnter() {
     this.ga.pageview.emit({
-      page: `Session - ${this.session.title}`
+      page: `/session/${this.session.$key}`,
+      title: `Session - ${this.session.title}`
     });
   }
 
