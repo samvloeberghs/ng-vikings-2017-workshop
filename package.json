@@ -12,9 +12,11 @@
   },
   "scripts": {
     "build": "npm run ionic:build",
+    "build:prod": "npm run ionic:build:prod",
     "clean": "ionic-app-scripts clean",
-    "preionic:build": "node ./config/update-sw",
     "ionic:build": "ionic-app-scripts build",
+    "preionic:build:prod": "node ./config/update-sw",
+    "ionic:build:prod": "ionic-app-scripts build -- --prod",
     "ionic:serve": "ionic-app-scripts serve"
   },
   "dependencies": {
