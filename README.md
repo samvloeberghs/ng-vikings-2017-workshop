@@ -36,7 +36,7 @@ Your part will be to import the initial data to your Firebase container and conn
 
 ## Moving from a mobile app to a progressive web app
 
-To start this part of the workshop, checkout the `part-3` mobile to pwa" branch.
+To start this part of the workshop, checkout the `part-3` "mobile to pwa" branch.
 
 We won't be building this application for deployment as a mobile app, but we will be serving it as a mobile web-app.
 
