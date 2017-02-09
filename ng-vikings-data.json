@@ -1,0 +1,703 @@
+{
+  "sessions" : [ {
+    "description" : "Get your badge, coffee, snack, enjoy talking with tech edicts around",
+    "endDate" : "2017-02-11T08:55:00+01:00",
+    "image" : "https://ngvikings.org/images/backgrounds/registration.jpg",
+    "room" : "Main Hall",
+    "startDate" : "2017-02-11T08:00:00+01:00",
+    "title" : "Registration & Breakfast"
+  }, {
+    "description" : "Official start of the conference. Greetings from the organizers, sponsors and partners.",
+    "endDate" : "2017-02-11T09:10:00+01:00",
+    "image" : "https://ngvikings.org/images/backgrounds/opening.jpg",
+    "room" : "Room: Bifrost",
+    "startDate" : "2017-02-11T09:00:00+01:00",
+    "title" : "ngVikings 2017 Opening"
+  }, {
+    "description" : "Foooooooood!",
+    "endDate" : "2017-02-11T13:35:00+01:00",
+    "image" : "https://ngvikings.org/images/backgrounds/lunch.jpg",
+    "room" : "Main Hall",
+    "startDate" : "2017-02-11T12:10:00+01:00",
+    "title" : "Lunch"
+  }, {
+    "description" : "Coffeeeeeee!",
+    "endDate" : "2017-02-11T15:55:00+01:00",
+    "image" : "https://ngvikings.org/images/backgrounds/coffee-break.jpg",
+    "room" : "Main Hall",
+    "startDate" : "2017-02-11T15:25:00+01:00",
+    "title" : "Coffee break"
+  }, {
+    "description" : "Make sure you won't miss closing ceremony.",
+    "endDate" : "2017-02-11T17:55:00+01:00",
+    "image" : "https://ngvikings.org/images/backgrounds/closing.jpg",
+    "room" : "Room: Bifrost",
+    "startDate" : "2017-02-11T17:45:00+01:00",
+    "title" : "Conference closing"
+  }, {
+    "description" : "Party is a great time to have some fun and meet new people!",
+    "endDate" : "2017-02-11T22:00:00+01:00",
+    "image" : "https://ngvikings.org/images/backgrounds/party.jpg",
+    "room" : "Main Hall",
+    "startDate" : "2017-02-11T18:00:00+01:00",
+    "title" : "Party & Networking"
+  }, {
+    "description" : "Coffeeeeeee!",
+    "image" : "https://ngvikings.org/images/backgrounds/morning.jpg",
+    "title" : "Morning coffee"
+  }, {
+    "description" : "Angular applications can lazily load modules to improve startup performance. Using an example, this session shows how you can optimize your solution with this approach. You will also learn about potential pitfalls as well as about asynchronously preloading modules with build-in strategies and your own strategies to speed up lazy loading.",
+    "endDate" : "2017-02-11T14:45:00+01:00",
+    "room" : "Room: Bifrost",
+    "speakerIds" : [ 0 ],
+    "startDate" : "2017-02-11T14:15:00+01:00",
+    "tags" : [ "Angular" ],
+    "title" : "Step by Step: Improving Startup Performance with Lazy Loading in Angular"
+  }, {
+    "description" : "Insomnia? Nightmares? Stress? That's usually some of the symptoms in developers that are not using continuous integration systems. In this talk you will learn how to create a healthy life-cycle in your development process.",
+    "endDate" : "2017-02-11T10:55:00+01:00",
+    "room" : "Room: Bifrost",
+    "speakerIds" : [ 1 ],
+    "startDate" : "2017-02-11T10:25:00+01:00",
+    "tags" : [ "CI", "Angular" ],
+    "title" : "Angular Continuous Integration"
+  }, {
+    "description" : "As web developers, we use JavaScript to create wonderful apps that run inside a web browser. But what if we could leverage the same technology to program physical devices that interact with the real world? In this session, we will combine Angular with some IoT sauce to create a hardware game.",
+    "endDate" : "2017-02-11T11:30:00+01:00",
+    "room" : "Room: Bifrost",
+    "speakerIds" : [ 2 ],
+    "startDate" : "2017-02-11T11:00:00+01:00",
+    "tags" : [ "IoT", "Angular" ],
+    "title" : "Angular of Things"
+  }, {
+    "description" : "NativeScript has opened up a whole new world to Angular developers: the ability to share code directly between your web and native iOS/Android applications. Which is awesome! But, just because you can share code across multiple platforms, doesn’t mean that you necessarily should. In this talk we’ll first take a look at what NativeScript makes possible from a code sharing perspective. We’ll build a few Angular components and use them both in the browser and on mobile devices. Then we’ll take a step back and look at the same code from a pragmatic, maintenance-oriented perspective. Come for practical tips & tricks on sharing code across multiple development environments.",
+    "endDate" : "2017-02-11T12:05:00+01:00",
+    "room" : "Room: Valhalla",
+    "speakerIds" : [ 3 ],
+    "startDate" : "2017-02-11T11:35:00+01:00",
+    "tags" : [ "NativeScript", "Angular" ],
+    "title" : "Sharing Code Between Web and Native Apps"
+  }, {
+    "description" : "Angular Material 2 has been evolving over the course of the past year, and it has finally become stable enough to use in production. Get familiar with the various components of Angular Material 2, how to use them in your app, and a few tips and tricks to getting started.",
+    "endDate" : "2017-02-11T12:05:00+01:00",
+    "room" : "Room: Bifrost",
+    "speakerIds" : [ 4 ],
+    "startDate" : "2017-02-11T11:35:00+01:00",
+    "tags" : [ "Angular Material", "Angular" ],
+    "title" : "An Introduction Into Using Angular’s Material Design"
+  }, {
+    "description" : "This talk is an introduction to Universal (others call it Isomorphic JavaScript) support for Angular (2+). The Angular Universal project aims to add support for Server-Side Rendering to Angular apps. In other words, with Universal you will be able to render your Angular application both on the client and outside the browser (say, a raspberry PI…). If you're curious and want to know and see how Angular is handling universality then don't miss this talk.",
+    "endDate" : "2017-02-11T10:20:00+01:00",
+    "room" : "Room: Bifrost",
+    "speakerIds" : [ 5 ],
+    "startDate" : "2017-02-11T09:50:00+01:00",
+    "tags" : [ "Angular Universal", "Angular" ],
+    "title" : "Angular OTB: Outside The Browser"
+  }, {
+    "description" : "Discover how Firebase can streamline development processes and how to easily add AngularFire2 to your Angular apps. A comprehensive walk-through of how to effortlessly create a full-stack application using Firebase and Angular. A demo web app (and possibly an Android app) will be built to illustrate integration points for authentication, realtime database, asset storage, hosting, notifications, analytics, and more.",
+    "endDate" : "2017-02-11T14:10:00+01:00",
+    "room" : "Room: Bifrost",
+    "speakerIds" : [ 6 ],
+    "startDate" : "2017-02-11T13:40:00+01:00",
+    "tags" : [ "Firebase", "AngularFire 2", "Angular" ],
+    "title" : "AngularFire2 and you"
+  }, {
+    "description" : "Forms are probably the most sensitive part of your web app. They are the main way we get data from the user. They seem simple enough, you just add an ngForm to your template, user clicks Submit and you have data. But there's more to them than that, and we're going to talk about that in this session. We'll try building forms in 2 ways: FormControls and FormBuilder. We'll then proceed to add Validations to one of the forms, touching on available Validations and then creating our custom one. We'll then look at the EventEmitter Observable and handle changes to our form.",
+    "endDate" : "2017-02-11T11:30:00+01:00",
+    "room" : "Room: Valhalla",
+    "speakerIds" : [ 7 ],
+    "startDate" : "2017-02-11T11:00:00+01:00",
+    "tags" : [ "ngForm", "Angular" ],
+    "title" : "Forms in Angular"
+  }, {
+    "description" : "Nota is the Danish Library and Expertise Center for people with print disabilities. We'll talk about our new accessible Audiobook player, which with a single codebase targets native Android, native iOS and web, and the challenges and experiences we've gained from the project.",
+    "endDate" : "2017-02-11T10:55:00+01:00",
+    "room" : "Room: Valhalla",
+    "speakerIds" : [ 8, 9 ],
+    "startDate" : "2017-02-11T10:25:00+01:00",
+    "tags" : [ "NativeScript", "Accessibility", "Angular" ],
+    "title" : "Developing Accessible Cross-platform Apps with NativeScript and Angular"
+  }, {
+    "description" : "This session is a journey, during which you will learn how to effectively test Angular. Using the angular-cli as our base we will begin by unit testing our application with the built in Karma unit testing scaffold. We will then move into e2e testing with Protractor, again leveraging the built in scaffolding that comes with the cli. For an added bonus you will get to see how using Async Await can help simplify your test suite.",
+    "endDate" : "2017-02-11T10:20:00+01:00",
+    "room" : "Room: Valhalla",
+    "speakerIds" : [ 10 ],
+    "startDate" : "2017-02-11T09:50:00+01:00",
+    "tags" : [ "Testing", "Angular CLI", "Angular" ],
+    "title" : "Angular: Beyond the tutorials with tests!"
+  }, {
+    "description" : "With multiple competing mobile eco systems to worry about, it is always important to choose an efficient solution for creating your mobile Apps With the exciting prospects of Progressive Web Apps taking the web & mobile web world by storm, it can be quite challenging to fit a current mobile setup to work with Progressive Web Apps. This talk will showcase how you can create a mobile app for Android, IOS, Windows with 100% the same code & same project and still have it work as a Progressive Web application without any change",
+    "endDate" : "2017-02-11T14:45:00+01:00",
+    "room" : "Room: Valhalla",
+    "speakerIds" : [ 11 ],
+    "startDate" : "2017-02-11T14:15:00+01:00",
+    "tags" : [ "Progressive Web Apps", "Ionic 2", "Angular" ],
+    "title" : "Progressively Mobile With Ionic"
+  }, {
+    "description" : "Modern applications have shifted their focus on the USER. On one hand the more personalized your application is the higher chances are your users are going to enjoy the experience of navigating it. The first step of getting to know your users is enabling them to save their preferences through a seamless sign up and login experience. More importantly, users need to feel secure and safe while using your app. As basic as it sounds, authentication and authorization have always been a complex task which many of us have struggled with but have had a huge impact on our users' experience. This talk is going to walk you through some of the best practices for authentication and session management in Angular apps and the various OAuth implementations. Finally, we're going to learn about some of the most common web security vulnerabilities and how to avoid them.",
+    "endDate" : "2017-02-11T14:10:00+01:00",
+    "room" : "Room: Valhalla",
+    "speakerIds" : [ 12 ],
+    "startDate" : "2017-02-11T13:40:00+01:00",
+    "tags" : [ "Authentication", "JWT", "Angular" ],
+    "title" : "Authenticate your users with Angular"
+  }, {
+    "description" : "Supplying and using Angular Components in separately developed Modules/Libraries is straight-forward if you're using Just-in-Time (JIT) compilation, but if you're using Ahead-of-Time AOT compilation (and you should!) then there are a few hurdles and gotchas you need to think about. This talk explains how to enable users of a library to supply components in an easy to use way that still satisfies the requirements of the Angular compiler, resulting is smaller and faster code that is still developer friendly.",
+    "endDate" : "2017-02-11T15:20:00+01:00",
+    "room" : "Room: Bifrost",
+    "speakerIds" : [ 13 ],
+    "startDate" : "2017-02-11T14:50:00+01:00",
+    "tags" : [ "AOT", "Dynamic Components", "Angular" ],
+    "title" : "Understanding AOT and Dynamic Components in Angular"
+  }, {
+    "description" : "Modern browsers are packed with powerful security features. In this talk, you will learn how to leverage these brand-new technologies to secure your Angular applications. We will cover three concrete security technologies: Subresource Integrity, Content Security Policy and HTML5 sandboxing, and you will walk away with practical advice on using them in your applications.",
+    "endDate" : "2017-02-11T15:20:00+01:00",
+    "room" : "Room: Valhalla",
+    "speakerIds" : [ 14 ],
+    "startDate" : "2017-02-11T14:50:00+01:00",
+    "tags" : [ "Security", "Angular" ],
+    "title" : "Keeping untrusted code out of your Angular application"
+  }, {
+    "description" : "We can no longer stick a .min.js file into our projects and start coding. Coding workflows have changed rapidly and we are facing a Javascript Fatigue. Learn how Angular applications are built with the aid of Webpack 2. From compiling to treeshaking, get an application from ~2.7MB to ~100KB.",
+    "endDate" : "2017-02-11T16:30:00+01:00",
+    "room" : "Room: Valhalla",
+    "speakerIds" : [ 15 ],
+    "startDate" : "2017-02-11T16:00:00+01:00",
+    "tags" : [ "Performance", "Optimization", "Angular" ],
+    "title" : "Building Angular Apps"
+  }, {
+    "description" : "Stop mapping knowledge of one implementation to another, get familiar with ng2 patterns once and use them everywhere. With this knowledge you will be able to understand and use ng2, or any other tools, much faster and effectively.",
+    "endDate" : "2017-02-11T16:30:00+01:00",
+    "room" : "Room: Bifrost",
+    "speakerIds" : [ 16 ],
+    "startDate" : "2017-02-11T16:00:00+01:00",
+    "tags" : [ "Patterns", "Angular" ],
+    "title" : "Unleash The Power Of Angular With Patterns"
+  }, {
+    "description" : "There is an entire world of complex interactions happening just under the surface of an Angular application. We can use lifecycle hooks to perform complex state management, coordinate control flow and finesse asynchronous events that would normally result in unpredictable and volatile results. We will start out by laying a solid foundation of what lifecycle hooks exist and when they happen in relation to each other. We will then anchor this knowledge in practical concepts that you can start using in your projects right away to help you make friends and influence people. Then we will go into the Twilight Zone as learn how to manipulate Zone.js events, 3rd party events and how to use lifecycle hooks to bridge the gap between Angular 1.x and Angular 2.",
+    "endDate" : "2017-02-11T17:05:00+01:00",
+    "room" : "Room: Bifrost",
+    "speakerIds" : [ 17 ],
+    "startDate" : "2017-02-11T16:35:00+01:00",
+    "tags" : [ "Lifecycle Hooks", "Performance", "Angular" ],
+    "title" : "The Secret Life(cycle) of Components"
+  }, {
+    "description" : "Learn the new way to do async in Angular. Why it's better than promises. And most importantly how to accomplish in RxJS what you already can do with promises and beyond.",
+    "endDate" : "2017-02-11T17:05:00+01:00",
+    "room" : "Room: Valhalla",
+    "speakerIds" : [ 18 ],
+    "startDate" : "2017-02-11T16:35:00+01:00",
+    "tags" : [ "RxJS", "Angular" ],
+    "title" : "RxJS - everything is a stream"
+  }, {
+    "description" : "Let me introduce you my big love, Angular CLI. Scaffolding a Angular app and show you some tip for your projects.",
+    "endDate" : "2017-02-11T17:40:00+01:00",
+    "room" : "Room: Valhalla",
+    "speakerIds" : [ 19 ],
+    "startDate" : "2017-02-11T17:10:00+01:00",
+    "tags" : [ "Angular CLI", "Angular" ],
+    "title" : "angular-cli - Coding like a viking"
+  }, {
+    "description" : "I had the opportunity to be introduced to using Webpack working at React shop, however as an AngularJS Fanboy and Apologist, I longed to bring the same brain-melting, experience to my ngApp. Problem was that I used, webpack, but never understood it. From automatically managing Bower, AMD, and NPM dependencies to code-splitting, minification, and source-mapping, I realized Webpack automagically handles all the hurdles I had ever encountered in my previous web projects. Together we will break down the core concepts and demystify this amazing tool. My hope for you is that by the time we’re done, you’ll have set fire to every Gulpfile and Gruntfile you’ve ever written, destroy all those extra style and script tags in your browser, and give you the tools needed to make the best modern web apps, without sacrificing developer experience. Join me while we webpack ALL the things.",
+    "endDate" : "2017-02-11T17:40:00+01:00",
+    "room" : "Room: Bifrost",
+    "speakerIds" : [ 20 ],
+    "startDate" : "2017-02-11T17:10:00+01:00",
+    "tags" : [ "Webpack", "Angular" ],
+    "title" : "Webpack: The Core Concepts"
+  }, {
+    "description" : "I’ll take you through a journey of the web browser history, and provide with a perspective on how the web apps of the future will look like in a world, that's increasingly dominated by mobile devices, and constrained by new challenges such as limited power, battery and connectivity. The web and the apps you build today will continue to be relevant, but maybe in a different way from what you expect today. Who knows, maybe browser you use today won’t exist in the future.",
+    "endDate" : "2017-02-11T09:45:00+01:00",
+    "image" : "https://ngvikings.org/images/backgrounds/keynote.jpg",
+    "room" : "Room: Bifrost",
+    "speakerIds" : [ 21 ],
+    "startDate" : "2017-02-11T09:15:00+01:00",
+    "tags" : [ "Keynote", "General", "Progressive Web Apps", "Angular" ],
+    "title" : "Keynote: A Future Without Browsers"
+  }, {
+    "description" : "Your Angular 1 application doesn’t have to be scrapped, or live forever. There’s another way. Migration from Angular 1 to the latest version of Angular is a great way to add life to your application without spending an unreasonable amount of time and money on “the great rewrite”. Come learn from Joe Eames how to migrate your application to to save time, money, and minimize risk. In this workshop attendees will migrate a production-ready application to the latest version of Angular, and learn a step by step plan for migrating any application from Angular 1.x, including: preparing your Angular 1.x application for migration, minimizing risk through small steps, dealing with third party libraries, effectively migrating routing, including protecting routes & preloading data, dealing with HTTP, and learning common gotchas when migrating from 1.x.",
+    "speakerIds" : [ 29 ],
+    "tags" : [ "Angular 1", "Angular" ],
+    "title" : "Migrating Applications from Angular 1 to Angular 2"
+  }, {
+    "description" : "Ask your questions directly to the speaker in a quiet, friendly environment.",
+    "endDate" : "2017-02-11T14:10:00+01:00",
+    "room" : "Room: Midgard",
+    "speakerIds" : [ 17, 18, 19, 20, 21 ],
+    "startDate" : "2017-02-11T13:40:00+01:00",
+    "tags" : [ "Office Hours", "Angular" ],
+    "title" : "Office Hours: Meet The Heroes"
+  }, {
+    "description" : "Ask your questions directly to the speaker in a quiet, friendly environment.",
+    "endDate" : "2017-02-11T14:45:00+01:00",
+    "room" : "Room: Midgard",
+    "speakerIds" : [ 5, 10, 1, 8, 9, 23 ],
+    "startDate" : "2017-02-11T14:15:00+01:00",
+    "tags" : [ "Office Hours", "Angular" ],
+    "title" : "Office Hours: Meet The Heroes"
+  }, {
+    "description" : "Ask your questions directly to the speaker in a quiet, friendly environment.",
+    "endDate" : "2017-02-11T15:20:00+01:00",
+    "room" : "Room: Midgard",
+    "speakerIds" : [ 2, 7, 3, 4, 26, 31 ],
+    "startDate" : "2017-02-11T14:50:00+01:00",
+    "tags" : [ "Office Hours", "Angular" ],
+    "title" : "Office Hours: Meet The Heroes"
+  }, {
+    "description" : "Ask your questions directly to the speaker in a quiet, friendly environment.",
+    "endDate" : "2017-02-11T16:30:00+01:00",
+    "room" : "Room: Midgard",
+    "speakerIds" : [ 11, 12, 0, 6, 30 ],
+    "startDate" : "2017-02-11T16:00:00+01:00",
+    "tags" : [ "Office Hours", "Angular" ],
+    "title" : "Office Hours: Meet The Heroes"
+  }, {
+    "description" : "Ask your questions directly to the speaker in a quiet, friendly environment.",
+    "endDate" : "2017-02-11T17:05:00+01:00",
+    "room" : "Room: Midgard",
+    "speakerIds" : [ 13, 14, 15, 16, 28 ],
+    "startDate" : "2017-02-11T16:35:00+01:00",
+    "tags" : [ "Office Hours", "Angular" ],
+    "title" : "Office Hours: Meet The Heroes"
+  }, {
+    "description" : "Ask your questions directly to the speaker in a quiet, friendly environment.",
+    "endDate" : "2017-02-11T17:40:00+01:00",
+    "room" : "Room: Midgard",
+    "speakerIds" : [ 29, 24, 25, 22, 27 ],
+    "startDate" : "2017-02-11T17:10:00+01:00",
+    "tags" : [ "Office Hours", "Angular" ],
+    "title" : "Office Hours: Meet The Heroes"
+  } ],
+  "speakers" : [ {
+    "avatar" : "https://ngvikings.org/images/people/ManfredSteyer.jpg",
+    "company" : "SOFTWAREarchitekt.at",
+    "country" : "Austria",
+    "description" : "Trainer and Consultant with focus on Angular. Google Developer Expert (GDE) and Microsoft MVP. Writes for O'Reilly, Hanser, the German Java Magazine, windows.developer and Heise. Regularly speaks at conferences.",
+    "name" : "Manfred Steyer",
+    "role" : "Trainer and Consultant",
+    "sessionIds" : [ 7, 32 ],
+    "social" : {
+      "github" : "ManfredSteyer",
+      "twitter" : "ManfredSteyer",
+      "website" : "http://www.softwarearchitekt.at"
+    },
+    "tags" : [ "Angular" ]
+  }, {
+    "avatar" : "https://ngvikings.org/images/people/RaulJimenez.jpg",
+    "company" : "Byte Default",
+    "country" : "Spain",
+    "description" : "Raul is a software engineer passionate about JS frameworks, web technologies and cross-platform development. Since 2012 he's focused in Angular, HTML5 video and his open source project Videogular. He manages his own company in Barcelona working as a consultant architect for companies around the world helping them to build high-performance web apps. In his spare time he's usually involved in the community as an Angular Google Developer Expert helping local meetups, writing blog posts, speaking at conferences and contributing to open source projects. He lives in Barcelona and is happy by default :)",
+    "name" : "Raul Jimenez",
+    "role" : "Software Engineer",
+    "sessionIds" : [ 8, 30 ],
+    "social" : {
+      "github" : "elecash",
+      "twitter" : "elecash",
+      "website" : "http://videogular.com"
+    },
+    "tags" : [ "CI", "Angular" ]
+  }, {
+    "avatar" : "https://ngvikings.org/images/people/UriShaked.jpg",
+    "company" : "BlackBerry",
+    "country" : "Israel",
+    "description" : "Uri Shaked is a Google Developer Expert for Web Technologies. He created the popular angular-moment open source module and regularly speaks about Web and IoT-related technologies in conferences and meetups. Among his interests are reverse engineering, hardware hacking, building 3D-printed robots and games, playing music and Salsa dancing.",
+    "name" : "Uri Shaked",
+    "role" : "Software Engineer",
+    "sessionIds" : [ 9, 31 ],
+    "social" : {
+      "github" : "urish",
+      "twitter" : "UriShaked",
+      "website" : "https://medium.com/@urish"
+    },
+    "tags" : [ "IoT", "Angular" ]
+  }, {
+    "avatar" : "https://ngvikings.org/images/people/SebastianWitalec.jpg",
+    "company" : "Telerik / Progress",
+    "country" : "United Kingdom",
+    "description" : "Sebastian Witalec is a Technical Evangelist for Progress/Telerik with over 8 years of experience in software engineering and architecture. Sebastian has passion for all types of technologies. However in the last few years his focus shifted towards cross platform Mobile development where he gained experience with Apache Cordova and NativeScript.",
+    "name" : "Sebastian Witalec",
+    "role" : "Technical Evangelist",
+    "sessionIds" : [ 10, 31 ],
+    "social" : {
+      "github" : "sebawita",
+      "twitter" : "sebawita",
+      "website" : "https://www.nativescript.org/"
+    },
+    "tags" : [ "NativeScript", "Angular" ]
+  }, {
+    "avatar" : "https://ngvikings.org/images/people/TracyLee.jpg",
+    "company" : "This Dot",
+    "country" : "USA",
+    "description" : "Tracy is a speaker, writer, and serial entrepreneur passionate about JavaScript and new technologies. After the acquisition of her last startup, she learned how to code and spends her time as a junior developer these days. Tracy spends her time building the JS community through her new startup, This Dot and runs the Modern Web podcast and events. She loves open source projects, pairing with friends, and empowering people to do awesome things. Tracy is also an organizer of ng-cruise and track chair for QCon.",
+    "name" : "Tracy Lee",
+    "role" : "Entrepreneur",
+    "sessionIds" : [ 11, 31 ],
+    "social" : {
+      "github" : "ladyleet",
+      "twitter" : "ladyleet",
+      "website" : "http://thisdotmedia.com"
+    },
+    "tags" : [ "Angular Material", "Angular" ]
+  }, {
+    "avatar" : "https://ngvikings.org/images/people/WassimChegham.jpg",
+    "company" : "SFEIR",
+    "country" : "France",
+    "description" : "Wassim (aka manekinekko on Twitter/Github) is a Developer Advocate based in Paris. He is also a Developer Expert in Web technologies nominated by Google. He enjoys writing technical articles, meeting developers at events, speaking at conferences and contributing to open source projects: contributor to Angular core, Documentation, Universal and more… Wassim’s mantra: Love what you do and do what you love.",
+    "name" : "Wassim Chegham",
+    "role" : "Developer Advocate",
+    "sessionIds" : [ 12, 30 ],
+    "social" : {
+      "github" : "manekinekko",
+      "twitter" : "manekinekko",
+      "website" : "https://medium.com/@wassimchegham"
+    },
+    "tags" : [ "Angular Universal", "Angular" ]
+  }, {
+    "avatar" : "https://ngvikings.org/images/people/ErikHaddad.jpg",
+    "company" : "Google",
+    "country" : "USA",
+    "description" : "Erik Haddad is a UX Engineer at Google on the Firebase team. Prior to joining Google, Erik was an advanced development engineer at ESPN and Disney.",
+    "name" : "Erik Haddad",
+    "role" : "UX Engineer",
+    "sessionIds" : [ 13, 32 ],
+    "social" : {
+      "github" : "erikhaddad",
+      "twitter" : "erikhaddad"
+    },
+    "tags" : [ "Firebase", "AngularFire 2", "Angular" ]
+  }, {
+    "avatar" : "https://ngvikings.org/images/people/AlexLakatos.jpg",
+    "company" : "Mozilla",
+    "country" : "United Kingdom",
+    "description" : "Alex Lakatos wears many hats at Mozilla for the past 5 years, including but not limited to Mozilla Tech Speaker, Mozilla Reps Council Member, T-Shirt Lover. JavaScript developer building on the open web, he has been pushing its boundaries every day. A Trainer based in London he's been doing public and private Angular classes, runs a Meetup group, and just can't shut up about Angular when in front of an audience.",
+    "name" : "Alex Lakatos",
+    "role" : "Tech Speaker",
+    "sessionIds" : [ 14, 31 ],
+    "social" : {
+      "github" : "AlexLakatos",
+      "twitter" : "lakatos88",
+      "website" : "http://alexlakatos.com"
+    },
+    "tags" : [ "ngForm", "Angular" ]
+  }, {
+    "avatar" : "https://ngvikings.org/images/people/DanielFreilling.jpg",
+    "company" : "Nota",
+    "country" : "Denmark",
+    "description" : "Fullstack developer mainly experienced in JavaScript and NodeJS. Daniel is 30 years old and have mostly been developing native Apps for iOS and Android and backends. Recently became a father to a little girl.",
+    "name" : "Daniel Freilling",
+    "role" : "Fullstack Developer",
+    "sessionIds" : [ 15, 30 ],
+    "social" : {
+      "website" : "http://nota.dk"
+    },
+    "tags" : [ "NativeScript", "Accessibility", "Angular" ]
+  }, {
+    "avatar" : "https://ngvikings.org/images/people/MortenSjogren.jpg",
+    "company" : "Nota",
+    "country" : "Denmark",
+    "description" : "Fullstack developer mainly experienced in JavaScript and NodeJS. Morten is 36 years old and have been active in Open Source for almost 10 years and a Linux user for 15. He's active in Prosa, the danish union for IT-professionals and in IT-politics.",
+    "name" : "Morten Sjøgren",
+    "role" : "Fullstack Developer",
+    "sessionIds" : [ 15, 30 ],
+    "social" : {
+      "twitter" : "m_abs",
+      "website" : "http://mabs.dk"
+    },
+    "tags" : [ "NativeScript", "Accessibility", "Angular" ]
+  }, {
+    "avatar" : "https://ngvikings.org/images/people/ZackaryChapple.jpg",
+    "company" : "CareerBuilder",
+    "country" : "USA",
+    "description" : "Zack Chapple - in his current role as a Software Architect at CareerBuilder he is leading the charge for UI convergence through an unifying vision around Atomic Design and Angular, while simultaneously breaking down silos across products and teams around the globe. Zack brings a distinct passion for software craftsmanship, testing and a contagious excitement for living on the bleeding edge of software. The best part is his background in teaching at development bootcamps for people of all skill levels, which helps him to convey complicated concepts in an easily digestible fashion.",
+    "name" : "Zackary Chapple",
+    "role" : "Software Architect",
+    "sessionIds" : [ 16, 30 ],
+    "social" : {
+      "github" : "zackarychapple",
+      "twitter" : "ZChapple",
+      "website" : "http://www.zackarychapple.guru"
+    },
+    "tags" : [ "Testing", "Angular CLI", "Angular" ]
+  }, {
+    "avatar" : "https://ngvikings.org/images/people/SaniYusuf.jpg",
+    "company" : "HAIBRID",
+    "country" : "United Kingdom",
+    "description" : "Sani is the founder of HAIBRID, a London based startup that uses Ionic to create innovative mobile solutions. Sani also co-manages the Ionic UK community in UK and has done some Ionic stuff spanning 3 continents. He has also done some cool stuff with companies like Sworkit, Microsoft, Huddlebuy & Anritsu and actively contributes to the Ionic open source community.",
+    "name" : "Sani Yusuf",
+    "role" : "Founder",
+    "sessionIds" : [ 17, 32 ],
+    "social" : {
+      "github" : "saniyusuf",
+      "twitter" : "saniyusuf",
+      "website" : "http://www.saniyusuf.com"
+    },
+    "tags" : [ "Progressive Web Apps", "Ionic 2", "Angular" ]
+  }, {
+    "avatar" : "https://ngvikings.org/images/people/SimonaCotin.jpg",
+    "company" : "Openet",
+    "country" : "Ireland",
+    "description" : "Simona is a enthusiastic full stack engineer building rich data visualization for network data in Openet. Her interest for Angular led her co-organising the AngularJS meetup in Dublin and she's always passionately talking about women in tech.",
+    "name" : "Simona Cotin",
+    "role" : "Full-stack Engineer",
+    "sessionIds" : [ 18, 32 ],
+    "social" : {
+      "github" : "simonaco",
+      "twitter" : "simona_cotin"
+    },
+    "tags" : [ "Authentication", "JWT", "Angular" ]
+  }, {
+    "avatar" : "https://ngvikings.org/images/people/SeanLandsman.jpg",
+    "company" : "ag-Grid",
+    "country" : "United Kingdom",
+    "description" : "Sean is head of frameworks at ag-Grid where he drives the future of ag-Grid with all the popular JavaScript frameworks. He is a specialist full stack technical lead with a background in enterprise solutions. Over 19 years in the industry has taught him the value of quality code and good team collaboration. He loves getting to grips with the internals of frameworks, and then simplifying the user experience via intuitive interfaces.",
+    "name" : "Sean Landsman",
+    "role" : "Full Stack Developer",
+    "sessionIds" : [ 19, 33 ],
+    "social" : {
+      "github" : "seanlandsman",
+      "twitter" : "seanlandsman"
+    },
+    "tags" : [ "AOT", "Dynamic Components", "Angular" ]
+  }, {
+    "avatar" : "https://ngvikings.org/images/people/PhilippeDeRyck.jpg",
+    "company" : "University of Leuven",
+    "country" : "Belgium",
+    "description" : "Philippe De Ryck is a professional speaker and trainer on software security and web security. Since he obtained his PhD at the imec-DistriNet research group (KU Leuven, Belgium), he has been running the group's Web Security Training program, which ensures a sustainable knowledge transfer of the group’s security expertise towards practitioners.",
+    "name" : "Philippe De Ryck",
+    "role" : "Trainer",
+    "sessionIds" : [ 20, 33 ],
+    "social" : {
+      "twitter" : "PhilippeDeRyck",
+      "website" : "https://www.websec.be"
+    },
+    "tags" : [ "Security", "Angular" ]
+  }, {
+    "avatar" : "https://ngvikings.org/images/people/ThomasHorvath.jpg",
+    "company" : "Xplosion Media",
+    "country" : "Ireland",
+    "description" : "Super interested in everything NG2 & performance, been working with Angular 2 since the beta and now trying share some of my experiences with it. Lead Front-End Developer @ Xplosion Media - Dublin, Ireland ",
+    "name" : "Thomas Horvath",
+    "role" : "Lead Front-End Developer",
+    "sessionIds" : [ 21, 33 ],
+    "social" : {
+      "github" : "criticalpixel",
+      "twitter" : "criticalpix"
+    },
+    "tags" : [ "Performance", "Optimization", "Angular" ]
+  }, {
+    "avatar" : "https://ngvikings.org/images/people/DmitriyShekhovtsov.jpg",
+    "company" : "Valor Software",
+    "country" : "Ukraine",
+    "description" : "JS maniac, author of ng2-bootstrap and couple of other ng2 and node.js modules.",
+    "name" : "Dmitriy Shekhovtsov",
+    "role" : "JS maniac",
+    "sessionIds" : [ 22, 33 ],
+    "social" : {
+      "github" : "valorkin",
+      "twitter" : "valorkin"
+    },
+    "tags" : [ "Patterns", "Angular" ]
+  }, {
+    "avatar" : "https://ngvikings.org/images/people/LeonardoZizzamia.jpg",
+    "company" : "Plan",
+    "country" : "USA",
+    "description" : "Leonardo Zizzamia is a former Twitter engineer with a flare for front-end development and Angular. Throughout the past few years, he has been involved on many levels within the Angular community by helping blog, teach and spread the word. Throughout 2016, he has been making extensive use of both Angular and Angular 1.x to bring his startup project, Plan, to life. Leonardo is deeply passionate about big and original ideas and continuously sets out to reinvent himself through challenging software development efforts. He also hosts great dinner parties with amazing Italian food.",
+    "name" : "Leonardo Zizzamia",
+    "role" : "Developer",
+    "sessionIds" : [ 23, 29 ],
+    "social" : {
+      "github" : "zizzamia",
+      "twitter" : "zizzamia"
+    },
+    "tags" : [ "Lifecycle Hooks", "Performance", "Angular" ]
+  }, {
+    "avatar" : "https://ngvikings.org/images/people/ChrisNoring.jpg",
+    "company" : "OVO Energy",
+    "country" : "UK",
+    "description" : "Christoffer is a Google developer expert in Web technologies, focusing on AngularJS. Being a passionate developer, he loves to share knowledge. Together with like-minded programmers he organized a total of 2000 developers and counting, from UK to Sweden. He also lectures a lot, on average 12 times per year + conferences. Christoffer likes working in many layers of the application and finds it equally interesting to think about usability and graphics as he does coding the data layer or any other layer for that matter.",
+    "name" : "Christoffer Noring",
+    "role" : "Frontend Developer",
+    "sessionIds" : [ 24, 29 ],
+    "social" : {
+      "github" : "softchris",
+      "twitter" : "chris_noring"
+    },
+    "tags" : [ "RxJS", "Angular" ]
+  }, {
+    "avatar" : "https://ngvikings.org/images/people/DavidMullerchen.jpg",
+    "company" : "webdave",
+    "country" : "Germany",
+    "description" : "David Muellerchen is a trainer at AngularJS.DE. He loves to speak and teach at meetups and conferences. In his meantime he works as a front-end developer at Acando. During leisure time he jumps through the parks with his kids or rides his racer. He also is a Organizer of the Hamburg AngularJS Meetup.",
+    "name" : "David Müllerchen",
+    "role" : "Trainer",
+    "sessionIds" : [ 25, 29 ],
+    "social" : {
+      "github" : "web-dave",
+      "twitter" : "webdave_de",
+      "website" : "https://www.webdave.de"
+    },
+    "tags" : [ "Angular CLI", "Angular" ]
+  }, {
+    "avatar" : "https://ngvikings.org/images/people/SeanLarkin.jpg",
+    "company" : "Mutual",
+    "country" : "USA",
+    "description" : "User Experience Developer @ Mutual of Omaha. Former technical support representative turned renegade software engineer and web developer, driven by the need to help people through the code he writes. 3.5 years now into the web world, Sean is a member of the Webpack core team, angular team and angular-cli core team, has held talks on Ruby, DAMP programming, AngularJS, and Webpack and lives to teach others about the world of Web Development. From Lincoln, Nebraska, loves to spend his time with his wife, newborn son, 18 chickens, dog, and gypsy cat. Obsessed with AngularJS, readability, Webpack, bundlers, tooling, and anything that helps Web Dev and Engineering easier and more enjoyable for anyone!",
+    "name" : "Sean Larkin",
+    "role" : "User Experience Developer",
+    "sessionIds" : [ 26, 29 ],
+    "social" : {
+      "github" : "thelarkinn",
+      "twitter" : "TheLarkInn"
+    },
+    "tags" : [ "Webpack", "Angular" ]
+  }, {
+    "avatar" : "https://ngvikings.org/images/people/KennethAuchenberg.jpg",
+    "company" : "Microsoft",
+    "country" : "Canada",
+    "description" : "Kenneth is a Program Manager at Microsoft and lives in Vancouver, Canada, where he leads the next generation of web developer tooling. He's a Global Shaper for Word Economic Forum, serves on multiple advisory boards, and is a frequent public speaker who travels the world.",
+    "name" : "Kenneth Auchenberg",
+    "role" : "Program Manager",
+    "sessionIds" : [ 27, 29 ],
+    "social" : {
+      "twitter" : "auchenberg",
+      "website" : "https://kenneth.io"
+    },
+    "tags" : [ "Keynote", "Progressive Web Apps", "Angular" ]
+  }, {
+    "avatar" : "https://ngvikings.org/images/people/KristiyanKostadinov.jpg",
+    "company" : "Google",
+    "country" : "Denmark",
+    "description" : "Kristiyan is a front-end developer, passionate open-source contributor and a core team member on Angular Material.",
+    "name" : "Kristiyan Kostadinov",
+    "role" : "Core team member, Angular Material",
+    "sessionIds" : [ 34 ],
+    "social" : {
+      "github" : "crisbeto"
+    },
+    "tags" : [ "Office Hours", "Angular" ]
+  }, {
+    "avatar" : "https://ngvikings.org/images/people/PascalPrecht.jpg",
+    "company" : "Thoughtram",
+    "country" : "Germany",
+    "description" : "Pascal is a front-end engineer and a Angular Developer Expert nominated by Google. He created the angular-translate module, and an Angular contributor.",
+    "name" : "Pascal Precht",
+    "role" : "Front-End Engineer",
+    "sessionIds" : [ 30 ],
+    "social" : {
+      "github" : "PascalPrecht",
+      "twitter" : "PascalPrecht"
+    },
+    "tags" : [ "Office Hours", "Angular" ]
+  }, {
+    "avatar" : "https://ngvikings.org/images/people/BrechtBilliet.jpg",
+    "company" : "Strongbrew",
+    "country" : "Belgium",
+    "description" : "Brecht is a trainer, blogger and software engineer passionate about architecture and best-practices. Brecht uses the technologies that he teaches in his workshops on a daily basis in different projects. One of his main activities is kickstarting new Angular projects in companies and guiding them in the right direction.",
+    "name" : "Brecht Billiet",
+    "role" : "Trainer",
+    "sessionIds" : [ 34 ],
+    "social" : {
+      "github" : "strongbrewio",
+      "twitter" : "brechtbilliet",
+      "website" : "http://www.brecht.io/"
+    },
+    "tags" : [ "RxJS", "Angular" ]
+  }, {
+    "avatar" : "https://ngvikings.org/images/people/KwintenPisman.jpg",
+    "company" : "Strongbrew",
+    "country" : "Belgium",
+    "description" : "Kwinten is a highly motivated developer with a passion for the fast changing front end world. He mainly focusses on Angular and RxJS nowadays and transfers his knowledge to other developers through intensive coaching and workshops.",
+    "name" : "Kwinten Pisman",
+    "role" : "Mentor",
+    "sessionIds" : [ 34 ],
+    "social" : {
+      "github" : "strongbrewio",
+      "twitter" : "KwintenP",
+      "website" : "http://blog.kwintenp.com/"
+    },
+    "tags" : [ "RxJS", "Angular" ]
+  }, {
+    "avatar" : "https://ngvikings.org/images/people/SamVloeberghs.jpg",
+    "company" : "NG-BE",
+    "country" : "Belgium",
+    "description" : "Sam is a freelance software architect, coach and project manager with a broad knowledge on frontend architecture. Currently he focusses on Angular, testing, the 'write once run everywhere' principe using Electron & Ionic 2 and Firebase.  Besides that he is co-managing the yearly Belgian Angular conference NG-BE, the Angular-Belgium and JSBE.io meetup group, supporting the frontend community where he can.",
+    "name" : "Sam Vloeberghs",
+    "role" : "Software architect",
+    "sessionIds" : [ 31 ],
+    "social" : {
+      "github" : "samvloeberghs",
+      "twitter" : "samvloeberghs",
+      "website" : "http://samvloeberghs.be/?willbeupdatedsoon"
+    },
+    "tags" : [ "Progressive Web Apps", "Firebase", "Ionic 2", "Angular" ]
+  }, {
+    "avatar" : "https://ngvikings.org/images/people/NirKaufman.jpg",
+    "company" : "500Tech",
+    "country" : "Israel",
+    "description" : "Nir is the Head of Angular Development at 500Tech - a leading front-end consultancy in Israel. He is a passionate JavaScript developer, international speaker, Angular evangelist and community activist.",
+    "name" : "Nir Kaufman",
+    "role" : "Head of Angular Development",
+    "sessionIds" : [ 34 ],
+    "social" : {
+      "github" : "nirkaufman",
+      "twitter" : "nirkaufman",
+      "website" : "http://500tech.com/"
+    },
+    "tags" : [ "Redux", "Angular" ]
+  }, {
+    "avatar" : "https://ngvikings.org/images/people/LaurentDuveau.jpg",
+    "company" : "Angular Academy",
+    "country" : "Canada",
+    "description" : "Full Stack Teacher, passionate about web and mobile dev with Angular, TypeScript and .NET",
+    "name" : "Laurent Duveau",
+    "role" : "Full Stack Teacher",
+    "sessionIds" : [ 33 ],
+    "social" : {
+      "github" : "ldex",
+      "twitter" : "AngularAcademy",
+      "website" : "http://www.AngularAcademy.ca"
+    },
+    "tags" : [ "Angular" ]
+  }, {
+    "avatar" : "https://ngvikings.org/images/people/JoeEames.jpg",
+    "company" : "ng-conf",
+    "country" : "USA",
+    "description" : "Joe is a Viking (at heart). By day he is a mild-mannered author for Pluralsight.com. By night he is a mild-mannered organizer of ng-conf. He is a Google Developer Expert in Angular, gives lots of talks & workshops, and loves all things web.",
+    "name" : "Joe Eames",
+    "role" : "Viking (at heart)",
+    "sessionIds" : [ 28, 34 ],
+    "social" : {
+      "github" : "joeeames",
+      "twitter" : "josepheames",
+      "website" : "http://joeeames.me/"
+    },
+    "tags" : [ "Angular 1", "Angular" ]
+  }, {
+    "avatar" : "https://ngvikings.org/images/people/ShmuelaJacobs.jpg",
+    "company" : "500Tech",
+    "country" : "Israel",
+    "description" : "Shmuela Jacobs is a senior front-end developer and consultant mastering Angular, at 500Tech, a leading Web development consultancy in Israel. During her academic studies (M.Sc. in Information Management Engineering and B.Sc. in Physics) she has combined her passions of coding and teaching as a software developer, teaching assistant, science museum guide, and researcher. Today she continues to enjoy these activities as a full-time front end developer, sharing her knowledge and experience in meetups and conferences. Shmuela currently resides in Tel Aviv with her husband Haggai, their deaf dog Ziggi, and their one-eyed cat Franco.",
+    "name" : "Shmuela Jacobs",
+    "role" : "Senior Front-End Developer",
+    "sessionIds" : [ 32 ],
+    "social" : {
+      "github" : "shmool",
+      "twitter" : "ShmuelaJ",
+      "website" : "http://ng-girls.org"
+    },
+    "tags" : [ "Community", "Angular" ]
+  }, {
+    "avatar" : "https://ngvikings.org/images/people/SamVerschueren.jpg",
+    "company" : "Pridiktiv.care",
+    "country" : "Belgium",
+    "description" : "Sam is a software engineer passionated about Node.js, Angular and open source. He likes to create tools that boosts his daily productivity and improves his workflow.",
+    "name" : "Sam Verschueren",
+    "role" : "Software Engineer",
+    "sessionIds" : [ 31 ],
+    "social" : {
+      "github" : "SamVerschueren",
+      "twitter" : "SamVerschueren"
+    },
+    "tags" : [ "Progressive Web Apps", "Firebase", "Ionic 2", "Angular" ]
+  } ]
+}
