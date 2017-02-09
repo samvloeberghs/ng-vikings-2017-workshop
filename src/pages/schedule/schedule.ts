@@ -61,7 +61,7 @@ export class SchedulePage implements OnInit, OnDestroy {
 
   ionViewDidEnter() {
     this.ga.pageview.emit({
-      page: 'Schedule'
+      page: '/schedule'
     });
   }
 

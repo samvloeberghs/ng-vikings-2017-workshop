@@ -30,7 +30,8 @@ export class SpeakerDetailPage {
 
   ionViewDidEnter() {
     this.ga.pageview.emit({
-      page: `Speaker - ${this.speaker.name}`
+      page: `/speaker/${this.speaker.$key}`,
+      title: `Speaker - ${this.speaker.name}`
     });
   }
 }

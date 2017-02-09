@@ -1,4 +1,5 @@
 export interface Speaker {
+  $key: string;
   name: string;
   company: string;
   avatar: string;
