@@ -5,10 +5,10 @@ It is based on the [Ionic 2 Conference application starter](https://github.com/d
 
 ## Content
 
-1. Starting with up Ionic 2 and Firebase, using the documentation
-2. Connecting Ionic 2 and Firebase, showing the data,
-3. Moving from a mobile app to a progressive web app
-4. Working offline
+1. Starting with Ionic 2
+2. Connecting Firebase
+3. Working offline in the browser
+4. Moving to a progressive web app
 
 ### Goal of the application
 
@@ -18,7 +18,7 @@ The application will be served as a progressive web-app that can ben installed t
 
 It will fetch the necesarry data and save it to make sure that the user can check the schedule, even when he is offline.
  
-## Starting with Ionic 2-
+## Starting with Ionic 2
 
 To start this part of the workshop, checkout the `part-1` "starting with ionic2" branch.
 
@@ -34,7 +34,7 @@ Next up is showing how we can connect to the real-time database and hosting of F
 
 Your part will be to import the initial data to your Firebase container and connect it to your running application, showing the dynamic data.
 
-## Working offline
+## Working offline in the browser
 
 To start this part of the workshop, checkout the `part-3` "working offline" branch.
 
@@ -42,9 +42,9 @@ The user should be able to see the speaker list and schedule at all times, even 
 
 We'll guide you trough a strategy to be cache the data and make the application available offline.
 
-## Moving from a mobile app to a progressive web app
+## Moving to a progressive web app
 
-To start this part of the workshop, checkout the `part-4` "mobile to pwa" branch.
+To start this part of the workshop, checkout the `part-4` "moving to pwa" branch.
 
 We won't be building this application for deployment as a mobile app, but we will be serving it as a mobile web-app.
 
