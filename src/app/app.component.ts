@@ -1,7 +1,6 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { Events, MenuController, Nav, App, IonicApp } from 'ionic-angular';
 
-import { LoginPage } from '../pages/login/login';
 import { TabsPage } from '../pages/tabs/tabs';
 import { SchedulePage } from '../pages/schedule/schedule';
 import { SpeakersPage } from '../pages/speakers/speakers';
@@ -24,17 +23,9 @@ export class ConferenceApp implements OnInit {
   @ViewChild(Nav) nav: Nav;
 
   // List of pages that can be navigated to from the left menu
-  // the left menu only works after login
-  // the login page disables the left menu
   appPages: PageInterface[] = [
     {title: 'Schedule', component: TabsPage, tabComponent: SchedulePage, icon: 'calendar'},
     {title: 'Speakers', component: TabsPage, tabComponent: SpeakersPage, index: 1, icon: 'contacts'},
-  ];
-  loggedInPages: PageInterface[] = [
-    {title: 'Logout', component: TabsPage, icon: 'log-out', logsOut: true}
-  ];
-  loggedOutPages: PageInterface[] = [
-    {title: 'Login', component: LoginPage, icon: 'log-in'}
   ];
   rootPage: any = TabsPage;
 
@@ -47,7 +38,6 @@ export class ConferenceApp implements OnInit {
   }
 
   ngOnInit() {
-    this.initApplication();
     this.setupBackButtonBehavior();
   }
 
@@ -63,19 +53,6 @@ export class ConferenceApp implements OnInit {
         console.log(`Didn't set nav root`);
       });
     }
-
-    if (page.logsOut === true) {
-      // Give the menu time to close before changing to logged out
-      setTimeout(() => {
-        // do logout
-      }, 1000);
-    }
-  }
-
-
-  enableMenu(loggedIn: boolean) {
-    this.menu.enable(loggedIn, 'loggedInMenu');
-    this.menu.enable(!loggedIn, 'loggedOutMenu');
   }
 
   isActive(page: PageInterface) {
@@ -93,20 +70,6 @@ export class ConferenceApp implements OnInit {
       return 'primary';
     }
     return;
-  }
-
-  private initApplication() {
-    this.listenToLoginEvents();
-  }
-
-  private listenToLoginEvents() {
-    this.events.subscribe('user:login', () => {
-      this.enableMenu(true);
-    });
-
-    this.events.subscribe('user:logout', () => {
-      this.enableMenu(false);
-    });
   }
 
   private setupBackButtonBehavior() {

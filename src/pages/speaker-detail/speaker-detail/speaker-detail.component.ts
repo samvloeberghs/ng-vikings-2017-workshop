@@ -23,8 +23,4 @@ export class SpeakerDetailComponent {
     this.showSessions = this.navController.indexOf(this.viewController) < 4;
   }
 
-  ionViewDidLoad() {
-    // doesn't work..
-    // this.showSessions = this.navController.indexOf(this.viewController) < 4;
-  }
 }

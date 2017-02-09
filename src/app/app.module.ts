@@ -5,10 +5,7 @@ import { AngularFireModule } from 'angularfire2';
 
 import { ConferenceApp } from './app.component';
 import { firebaseConfig } from './app.firebase';
-import { LoginPage } from '../pages/login/login';
 import { TabsPage } from '../pages/tabs/tabs';
-
-// App Modules
 import { ScheduleModule } from '../pages/schedule';
 import { SessionDetailModule } from '../pages/session-detail';
 import { SpeakersModule } from '../pages/speakers';
@@ -18,7 +15,6 @@ import { SharedModule } from '../shared/shared.module';
 @NgModule({
   declarations: [
     ConferenceApp,
-    LoginPage,
     TabsPage
   ],
   imports: [
@@ -33,7 +29,6 @@ import { SharedModule } from '../shared/shared.module';
   bootstrap: [IonicApp],
   entryComponents: [
     ConferenceApp,
-    LoginPage,
     TabsPage
   ],
   providers: [Storage]
