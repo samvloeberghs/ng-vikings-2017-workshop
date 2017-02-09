@@ -10,10 +10,13 @@ export class ConnectionService {
   private connected: boolean;
 
   constructor(af: AngularFire) {
-    af.database.object('.info/connected').subscribe(value => {
-      this.connected = value.$value;
-      this.connection$.next(this.connected);
-    });
+    af.database.object('.info/connected')
+      .debounceTime(2000)
+      .distinctUntilChanged()
+      .subscribe(value => {
+        this.connected = value.$value;
+        this.connection$.next(this.connected);
+      });
   }
 
   isConnected() {
