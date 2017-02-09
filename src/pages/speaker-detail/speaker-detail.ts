@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { GoogleAnalyticsService } from 'angular-ga';
 
 import { SessionDetailPage } from '../session-detail/session-detail';
 import { URLService } from '../../shared/services';
@@ -14,7 +15,8 @@ export class SpeakerDetailPage {
 
   constructor(private navCtrl: NavController,
               private navParams: NavParams,
-              private urlService: URLService) {
+              private urlService: URLService,
+              private ga: GoogleAnalyticsService) {
     this.speaker = this.navParams.data;
   }
 
@@ -24,5 +26,11 @@ export class SpeakerDetailPage {
 
   openUrl(url: string) {
     this.urlService.open(url);
+  }
+
+  ionViewDidEnter() {
+    this.ga.pageview.emit({
+      page: `Speaker - ${this.speaker.name}`
+    });
   }
 }

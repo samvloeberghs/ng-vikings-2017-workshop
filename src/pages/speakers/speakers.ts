@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { ActionSheet, NavController } from 'ionic-angular';
+import { GoogleAnalyticsService } from 'angular-ga';
 
 import { SpeakerDetailPage } from '../speaker-detail/speaker-detail';
 import { Speaker } from '../../shared/entities';
@@ -21,7 +22,8 @@ export class SpeakersPage {
 
   constructor(private navCtrl: NavController,
               private confData: ConferenceDataService,
-              private urlService: URLService) {
+              private urlService: URLService,
+              private ga: GoogleAnalyticsService) {
   }
 
   ionViewDidLoad() {
@@ -45,6 +47,12 @@ export class SpeakersPage {
 
           return speakers;
         });
+    });
+  }
+
+  ionViewDidEnter() {
+    this.ga.pageview.emit({
+      page: 'Speakers'
     });
   }
 
