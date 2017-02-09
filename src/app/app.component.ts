@@ -1,5 +1,5 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
-import { Events, MenuController, Nav, App, IonicApp, ToastController, Toast } from 'ionic-angular';
+import { Events, MenuController, Nav, App, IonicApp, ToastController } from 'ionic-angular';
 
 import { TabsPage } from '../pages/tabs/tabs';
 import { SchedulePage } from '../pages/schedule/schedule';
