@@ -6,7 +6,6 @@ import { Storage } from '@ionic/storage';
 
 // app imports
 import { Speaker, Session, SessionGroup } from '../entities';
-import { FavoritesService } from './favorites.service';
 
 @Injectable()
 export class ConferenceDataService {
@@ -15,14 +14,12 @@ export class ConferenceDataService {
   rpSessions$ = new ReplaySubject<Session[]>();
   rpSessionGroups$ = new ReplaySubject<SessionGroup[]>();
 
-  // basic entities
   private speakers$: Observable<Speaker[]> = this.loadEntity('speakers');
   private sessions$: Observable<Session[]> = this.loadEntity('sessions');
 
   // for every public stream we had to create a replay subject (otherwise it would only listen to it once)
   constructor(private af: AngularFire,
-              private storage: Storage,
-              private favoritesService: FavoritesService) {
+              private storage: Storage) {
 
     this.sessions$
       .map((sessions: Session[]) => {

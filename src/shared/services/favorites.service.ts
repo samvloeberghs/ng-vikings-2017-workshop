@@ -1,4 +1,3 @@
-// 3d party imports
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { ReplaySubject } from 'rxjs/ReplaySubject';
