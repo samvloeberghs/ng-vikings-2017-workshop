@@ -1,9 +1,10 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
-import { Events, MenuController, Nav, App, IonicApp } from 'ionic-angular';
+import { Events, MenuController, Nav, App, IonicApp, ToastController, Toast } from 'ionic-angular';
 
 import { TabsPage } from '../pages/tabs/tabs';
 import { SchedulePage } from '../pages/schedule/schedule';
 import { SpeakersPage } from '../pages/speakers/speakers';
+import { ConnectionService } from '../shared/services';
 
 export interface PageInterface {
   title: string;
@@ -30,17 +31,40 @@ export class ConferenceApp implements OnInit {
   rootPage: any = TabsPage;
 
   private innerNavCtrl: any;
+  private wasOffline = false;
 
   constructor(private events: Events,
               private menu: MenuController,
+              private toast: ToastController,
               private app: App,
-              private ionicApp: IonicApp) {
+              private ionicApp: IonicApp,
+              private connection: ConnectionService) {
   }
 
   ngOnInit() {
     this.setupBackButtonBehavior();
-  }
 
+    this.connection.connection$.subscribe((isConnected: boolean) => {
+      let message: string;
+
+      if (!isConnected) {
+        this.wasOffline = true;
+        message = 'Connection lost';
+      } else if (this.wasOffline) {
+        message = 'Connection reestablished';
+      }
+
+      if (message) {
+        const toast = this.toast.create({
+          message,
+          duration: 5000,
+          showCloseButton: true
+        });
+
+        toast.present();
+      }
+    });
+  }
 
   openPage(page: PageInterface) {
     // the nav component was found using @ViewChild(Nav)
