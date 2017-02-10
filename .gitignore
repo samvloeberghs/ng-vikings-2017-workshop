@@ -2,6 +2,7 @@
 # http://git-scm.com/docs/gitignore
 app.config.ts
 app.config.workshop.ts
+app.config.live.ts
 
 firebase.json
 .firebaserc
