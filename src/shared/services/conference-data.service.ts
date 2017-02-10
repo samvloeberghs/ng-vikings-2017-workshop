@@ -10,102 +10,55 @@ import { Speaker, Session, SessionGroup } from '../entities';
 @Injectable()
 export class ConferenceDataService {
 
-  rpSpeakers$ = new ReplaySubject<Speaker[]>();
-  rpSessions$ = new ReplaySubject<Session[]>();
-  rpSessionGroups$ = new ReplaySubject<SessionGroup[]>();
+  /**
+   * You need 3 replaysubject:
+   * 1) speakers
+   * 2) sessions
+   * 3) sessionGroups
+   */
 
-  private speakers$: Observable<Speaker[]> = this.loadEntity('speakers');
-  private sessions$: Observable<Session[]> = this.loadEntity('sessions');
+  /**
+   * You need 2 observables, one for the speakers and one for the sessions
+   */
 
-  // for every public stream we had to create a replay subject (otherwise it would only listen to it once)
-  constructor(private af: AngularFire,
-              private storage: Storage) {
+  constructor(private af: AngularFire) {
 
-    this.sessions$
-      .map((sessions: Session[]) => {
-        return sessions.map((session: any) => {
-          this.prefetch(session.image);
+    /**
+     * Transforming the sessions:
+     * Steps to follow
+     * 1) map the sessions firebase data on your data in memory
+     * 2) prefetch the image of the session
+     * 3) transform the data
+     * 4) push it on the replaySubject
+     */
 
-          session.startDate = new Date(session.startDate);
-          session.endDate = new Date(session.endDate);
-          session.speakers = [];
+    /**
+     * Mapping the speakers to the sessions, exposing the speakers
+     * 1) combine the observables of speakers and sessions
+     * 2) if a speaker has sessions, add the speaker to the session
+     */
 
-          delete session.roomId;
+    /**
+     * Mapping the sessions on sessionGroups
+     * 1) subscribe to the sessions
+     * 2) for every hour map all the sessions that session group
+     * 3) only keep the group if there are sessions
+     * 4) push it on the groups replaySubject
+     */
 
-          return session;
-        });
-      })
-      .subscribe((sessions: Session[]) => {
-        this.rpSessions$.next(sessions);
-      });
-
-    Observable.combineLatest(
-      this.speakers$,
-      this.rpSessions$,
-      (speakers: Speaker[], sessions: Session[]): Speaker[] => {
-        return speakers.map((speaker: any) => {
-          this.prefetch(speaker.avatar);
-
-          if (speaker.sessionIds) {
-            speaker.sessions = speaker.sessionIds.map((x: number) => {
-              const session = sessions[x];
-
-              session.speakers.push(speaker);
-
-              return session;
-            });
-
-            delete speaker.sessionIds;
-          }
-
-          return speaker;
-        });
-      }
-    ).subscribe((speakers: Speaker[]) => {
-      this.rpSpeakers$.next(speakers);
-    });
-
-    this.rpSessions$.subscribe((sessions: Session[]) => {
-      const groups: SessionGroup[] = [];
-
-      for (let i = 0; i < 24; i++) {
-        const sessionsInGroup = sessions
-          .filter(session => session.startDate.getHours() >= i && session.startDate.getHours() < (i + 1))
-          .sort((a, b) => a.startDate.getTime() - b.startDate.getTime());
-
-        if (sessionsInGroup.length > 0) {
-          groups.push({
-            startHour: i,
-            endHour: (i + 1),
-            sessions: sessionsInGroup
-          });
-        }
-      }
-
-      this.rpSessionGroups$.next(groups);
-    });
   }
 
+  /**
+   * Takes the entity / table as parameter
+   * @param entity:string
+   */
   private loadEntity(entity: string) {
-    // TODO make this a hot observable
-    return Observable.merge(
-      this.loadRemoteEntity(entity),
-      this.loadLocalEntity(entity)
-    ).filter(Boolean);
+    // to implement
   }
 
-  private loadRemoteEntity(entity: string) {
-    return this.af.database.list(entity)
-      .do(result => {
-        this.storage.set(entity, JSON.stringify(result));
-      });
-  }
-
-  private loadLocalEntity(entity: string) {
-    return this.storage.get(entity)
-      .then(result => result && JSON.parse(result));
-  }
-
+  /**
+   * Preloads and image by url by loading it in memory
+   */
   private prefetch(url: string) {
     if (url) {
       const img = new Image();

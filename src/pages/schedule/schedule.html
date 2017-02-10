@@ -28,7 +28,6 @@
 <ion-content>
   <session-list
     *ngIf="!emptyState"
-    [groups]="groups$ | async"
     [options]="segment === 'all'"
     (toggle)="toggleFavorite($event)"
     (select)="goToSessionDetail($event)">

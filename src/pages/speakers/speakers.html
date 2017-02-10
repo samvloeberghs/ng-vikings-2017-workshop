@@ -17,7 +17,6 @@
 
 <ion-content class="outer-content speaker-list">
   <speaker-list
-    [speakers]="speakers$ | async"
     (select)="goToSpeakerDetail($event)"
     (open)="openUrl($event)">
   </speaker-list>
