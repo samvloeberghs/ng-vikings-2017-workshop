@@ -11,6 +11,18 @@ self.toolbox.options.cache = {
   name: 'ionic-cache-' + VERSION
 };
 
+self.addEventListener('activate', event => {
+    event.waitUntil(
+        caches.keys().then(cacheNames => {
+            return Promise.all(cacheNames.map(cacheName => {
+                if (cacheName !== self.toolbox.options.cache) {
+                    return caches.delete(cacheName);
+                }
+            }));
+        })
+    );
+});
+
 // pre-cache our key assets
 self.toolbox.precache(
   [
