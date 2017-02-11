@@ -87,11 +87,8 @@ export class ConferenceDataService {
   }
 
   private loadEntity(entity: string) {
-    // TODO make this a hot observable
-    return Observable.merge(
-      this.loadRemoteEntity(entity),
-      this.loadLocalEntity(entity)
-    ).filter(Boolean);
+    // TODO load local entities AND remote entities
+    return this.loadRemoteEntity(entity);
   }
 
   private loadRemoteEntity(entity: string) {
@@ -102,14 +99,10 @@ export class ConferenceDataService {
   }
 
   private loadLocalEntity(entity: string) {
-    return this.storage.get(entity)
-      .then(result => result && JSON.parse(result));
+    // TODO implement storage retrieval
   }
 
   private prefetch(url: string) {
-    if (url) {
-      const img = new Image();
-      img.src = url;
-    }
+    // TODO implement
   }
 }

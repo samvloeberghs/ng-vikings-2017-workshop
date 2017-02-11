@@ -5,26 +5,11 @@
 'use strict';
 importScripts('./build/sw-toolbox.js');
 
-const VERSION = 'v1.1.1';
+// TODO initialize cache name
 
-self.toolbox.options.cache = {
-  name: 'ionic-cache-' + VERSION
-};
+// TODO pre-cache our key assets
 
-// pre-cache our key assets
-self.toolbox.precache(
-  [
-    './build/main.js',
-    './build/main.css',
-    './build/polyfills.js',
-    'index.html',
-    'manifest.json'
-  ]
-);
+// TODO dynamically cache any other local assets
 
-// dynamically cache any other local assets
-self.toolbox.router.any('/*', self.toolbox.cacheFirst);
-
-// for any other requests go to the network, cache,
+// TODO for any other requests go to the network, cache,
 // and then only use that cached resource if your user goes offline
-self.toolbox.router.default = self.toolbox.networkFirst;
