@@ -5,9 +5,36 @@
 </ion-header>
 
 <ion-content padding class="speaker-detail">
-  <speaker-detail
-    [speaker]="speaker"
-    (session)="goToSessionDetail($event)"
-    (url)="openUrl($event)">
-  </speaker-detail>
+  <div text-center>
+    <img [src]="speaker.avatar" [alt]="speaker.name"><br>
+
+    <button ion-button icon-only clear small
+      *ngIf="speaker.social.website"
+      (click)="openUrl(speaker.social.website)">
+      <ion-icon name="link"></ion-icon>
+    </button>
+    <button ion-button icon-only clear small
+      *ngIf="speaker.social.twitter"
+      (click)="openUrl('https://twitter.com' + speaker.social.twitter)">
+      <ion-icon name="logo-twitter"></ion-icon>
+    </button>
+    <button ion-button icon-only clear small
+      *ngIf="speaker.social.github"
+      (click)="openUrl('https://github.com' + speaker.social.github)">
+      <ion-icon name="logo-github"></ion-icon>
+    </button>
+  </div>
+
+  <h2>{{speaker.role}}</h2>
+
+  <p>{{speaker.description}}</p>
+
+  <h3>Sessions</h3>
+
+  <ion-list inset>
+    <ion-item *ngFor="let session of speaker.sessions" (click)="goToSessionDetail(session)">
+      <ion-icon name="chatboxes" item-left></ion-icon>
+      {{session.title}}
+    </ion-item>
+  </ion-list>
 </ion-content>

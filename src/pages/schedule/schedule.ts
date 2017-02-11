@@ -1,8 +1,6 @@
 import { Component, ViewChild, OnInit, OnDestroy } from '@angular/core';
 import {
   AlertController,
-  ToastController,
-  LoadingController,
   Loading,
   ItemSliding,
   List,
@@ -13,13 +11,6 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 
-/*
- To learn how to use third party libs in an
- Ionic app check out our docs here: http://ionicframework.com/docs/v2/resources/third-party-libs/
- */
-// import moment from 'moment';
-
-import { SessionDetailPage } from '../session-detail/session-detail';
 import { ConferenceDataService } from '../../shared/services';
 import { Session, SessionGroup } from '../../shared/entities';
 import { ToggleResult } from './entities';
@@ -46,8 +37,6 @@ export class SchedulePage implements OnInit, OnDestroy {
   private disposables: Subscription[] = [];
 
   constructor(private alertCtrl: AlertController,
-              private toastCtrl: ToastController,
-              private loadingCtrl: LoadingController,
               private navCtrl: NavController,
               private confData: ConferenceDataService,
               private favoritesService: FavoritesService,
@@ -116,41 +105,17 @@ export class SchedulePage implements OnInit, OnDestroy {
         });
     });
 
-    this.groups$.take(1).subscribe(() => {
-      this.closeLoader();
-    });
+    // TODO Close the loader when the data was loaded.
+    // The closing should only be done once!
   }
 
   goToSessionDetail(session: Session) {
-    // go to the session detail page
-    // and pass in the session data
-    this.navCtrl.push(SessionDetailPage, session);
+    // TODO Implement navigation to the session detail page
   }
 
   toggleFavorite({slidingItem, session}: ToggleResult) {
     if (session.favorited) {
-      const alert = this.alertCtrl.create({
-        title: 'Defavorite',
-        message: 'Are you sure you would like to remove this session from your favorites?',
-        buttons: [
-          {
-            text: 'Cancel',
-            handler: () => {
-              slidingItem.close();
-              return;
-            }
-          },
-          {
-            text: 'Yes, defavorite',
-            handler: () => {
-              this.toggleFavoriteToast(session, slidingItem);
-            }
-          }
-        ]
-      });
-
-      // now present the alert on top of all other content
-      alert.present();
+      // TODO show confirmation box and ask if the user is sure that he wants to defavorite the session
     } else {
       this.toggleFavoriteToast(session, slidingItem);
     }
@@ -168,26 +133,15 @@ export class SchedulePage implements OnInit, OnDestroy {
 
   private toggleFavoriteToast(session: Session, slidingItem: ItemSliding) {
 
-    this.presentLoader();
     this.favoritesService.toggleFavorite(session).then(() => {
-      const toast = this.toastCtrl.create({
-        message: session.favorited ? 'Session has been favorited' : 'Session has been defavorited',
-        showCloseButton: true,
-        closeButtonText: 'close',
-        duration: 3000
-      });
-      toast.present();
+      // TODO show toast notification
       slidingItem.close();
-      this.closeLoader();
     });
 
   }
 
   private presentLoader() {
-    this.loader = this.loadingCtrl.create({
-      content: 'Please wait...'
-    });
-    this.loader.present();
+    // TODO show loader
   }
 
   private closeLoader() {
