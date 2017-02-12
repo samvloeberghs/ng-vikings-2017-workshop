@@ -87,7 +87,6 @@ export class ConferenceDataService {
   }
 
   private loadEntity(entity: string) {
-    // TODO make this a hot observable
     return Observable.merge(
       this.loadRemoteEntity(entity),
       this.loadLocalEntity(entity)
