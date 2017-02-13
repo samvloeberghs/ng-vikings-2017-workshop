@@ -67,6 +67,9 @@ export class SchedulePage implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.presentLoader();
+    this.confData.rpSessionGroups$.take(1).subscribe(() => {
+      this.closeLoader();
+    });
   }
 
   ngOnDestroy() {
@@ -116,9 +119,8 @@ export class SchedulePage implements OnInit, OnDestroy {
         });
     });
 
-    this.groups$.take(1).subscribe(() => {
-      this.closeLoader();
-    });
+    this.groups$.subscribe();
+  
   }
 
   goToSessionDetail(session: Session) {
